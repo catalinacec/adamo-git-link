@@ -1,0 +1,95 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} correctamente",
+    "error": "No se pudo {{action}} {{entity}}",
+    "not_found": "{{entity}} no encontrado"
+  },
+  "entities": {
+    "notification": "notificacion",
+    "notifications": "notificationes",
+    "link": "enlace",
+    "file": "archivo"
+  },
+  "statuses": {
+    "sent": "enviado",
+    "deleted": "eliminado",
+    "rejected": "rechazado"
+  },
+  "actions": {
+    "list": "listado",
+    "create": "creado",
+    "update": "actualizado",
+    "delete": "eliminado",
+    "retrieve": "recuperado",
+    "rollback": "revertido",
+    "restore": "restaurado",
+    "reject": "rechazado",
+    "notify": "notificado",
+    "generate": "generado",
+    "validate": "validado"
+  },
+  "infinitive_actions": {
+    "list": "listar",
+    "create": "crear",
+    "update": "actualizar",
+    "delete": "eliminar",
+    "retrieve": "recuperar",
+    "rollback": "revertir",
+    "restore": "restaurar",
+    "reject": "rechazar",
+    "notify": "notificar",
+    "generate": "generar",
+    "validate": "validar"
+  },
+  "validation": {
+    "invalid_reason": "Razón inválida",
+    "validation_failed": "Hay errores de validación en la entrada.",
+    "at_least_one_required": "Se requiere al menos un campo o atributo.",
+    "required": "Se requiere {{field}}",
+    "invalid_email": "Formato de correo inválido.",
+    "invalid_status": "Estado inválido.",
+    "must_be_integer": "{{field}} debe ser un número entero.",
+    "min_array": "{{field}} debe contener al menos {{min}} elementos.",
+    "file": {
+      "required": "Se requiere un archivo.",
+      "max_size": "El tamaño máximo es {{size}}MB.",
+      "invalid_type": "Solo se permiten los formatos: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Demasiados intentos de inicio de sesión. Por favor, inténtelo de nuevo en 5 minutos."
+    },
+    "auth": {
+      "invalid_credentials": "Correo o contraseña inválidos.",
+      "authentication_failed": "Credenciales proporcionadas inválidas.",
+      "registration_failed": "El proceso de registro falló. Por favor, inténtelo de nuevo.",
+      "user_not_found": "El usuario solicitado no existe.",
+      "permission_denied": "No tienes permiso para realizar esta acción."
+    },
+    "server": {
+      "internal": "Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde."
+    },
+    "resource": {
+      "conflict": "El recurso ya existe.",
+      "not_found": "{{entity}} no encontrado.",
+      "format_error": "El documento o archivo tiene un formato inválido, está protegido con contraseña o no puede ser leído."
+    },
+    "token": {
+      "expired": "El token proporcionado ha expirado.",
+      "missing": "Token no enviado.",
+      "invalid": "Token inválido.",
+      "missing_header": "Falta el encabezado de autorización."
+    },
+    "notification": {
+      "mark_as_read_failed": "No se pudo marcar la notificación como leída.",
+      "count_unread_failed": "No se pudo contar las notificaciones no leídas."
+    }
+  },
+  "custom": {
+    "user_not_authorized": "No está autorizado para eliminar esta notificación",
+    "user_not_authorized_to_mark_as_read": "No está autorizado para marcar esta notificación como leída",
+    "notification_mark_read": "Notificación marcada como leída correctamente",
+    "unread_notifications_counted": "Notificaciones no leídas contadas correctamente"
+  }
+}

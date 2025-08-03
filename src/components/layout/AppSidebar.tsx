@@ -26,31 +26,33 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-white/10 text-white font-medium" : "text-white/80 hover:bg-white/5 hover:text-white";
+    isActive 
+      ? "bg-white/15 text-white" 
+      : "text-white/70 hover:bg-white/10 hover:text-white";
 
   return (
-    <Sidebar className="bg-[#4B5BA6] border-none w-64">
-      <SidebarHeader className="p-6">
+    <Sidebar className="bg-[#5B6BC0] border-none w-64">
+      <SidebarHeader className="p-6 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-            <span className="text-[#4B5BA6] font-bold text-sm">AS</span>
+          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+            <span className="text-[#5B6BC0] font-bold text-lg">A</span>
           </div>
-          <span className="text-white font-semibold text-lg">adamosign</span>
+          <span className="text-white font-medium text-lg tracking-wide">adamosign</span>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-4">
+      <SidebarContent className="px-3 py-4">
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-1">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} end className={getNavCls}>
-                      <div className="flex items-center gap-3 py-3">
+                      <div className="flex items-center gap-3 py-3 px-3 rounded-lg w-full">
                         <item.icon className="h-5 w-5 flex-shrink-0" />
                         <div className="flex items-center justify-between w-full">
-                          <span>{item.title}</span>
+                          <span className="font-medium">{item.title}</span>
                           {item.badge && (
                             <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                           )}
@@ -65,20 +67,20 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4">
+      <SidebarFooter className="p-4 border-t border-white/10">
         <div className="space-y-2">
           {/* User Profile */}
-          <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer">
-            <div className="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center">
-              <User className="h-4 w-4 text-white" />
+          <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 cursor-pointer">
+            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+              <User className="h-5 w-5 text-white" />
             </div>
-            <span className="text-white text-sm">Mi perfil</span>
+            <span className="text-white text-sm font-medium">Mi perfil</span>
           </div>
 
           {/* Logout */}
-          <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer text-white/80">
+          <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 cursor-pointer text-white/70">
             <LogOut className="h-5 w-5 flex-shrink-0" />
-            <span className="text-sm">Cerrar sesión</span>
+            <span className="text-sm font-medium">Cerrar sesión</span>
           </div>
         </div>
       </SidebarFooter>

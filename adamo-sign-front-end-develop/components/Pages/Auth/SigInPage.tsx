@@ -8,6 +8,7 @@ import { SignInInputs } from "@/schemas/signInSchema";
 import { PasswordInputs } from "@/schemas/passwordSchema";
 import { SignInForm } from "@/components/Form/SignInForm";
 import { UpdatePasswordForm } from "@/components/Form/UpdatePasswordForm";
+import Link from "next/link";
 import { PrivacyModal } from "@/components/Modals/PrivacyModal";
 import { TermsFullModal } from "@/components/Modals/TermsFullModal";
 import { PrivacyFullModal } from "@/components/Modals/PrivacyFullModal";
@@ -107,6 +108,15 @@ export default function SignInPage() {
           setIsPasswordUpdate={() => {}} 
           errorMessage={updatePasswordError}
         />
+      )}
+
+      {tab === 'sign-in' && (
+        <p className="mt-8 text-center">
+          <span className="text-white/80">¿No tienes cuenta? </span>
+          <Link className="font-semibold text-white" href="/register">
+            Regístrate
+          </Link>
+        </p>
       )}
 
       <p className="mt-12 text-center"><LangToggle/></p>

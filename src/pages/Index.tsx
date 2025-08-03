@@ -1,16 +1,17 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, Users, Shield, TrendingUp, Clock, CheckCircle } from "lucide-react";
+import { CheckCircle, XCircle, Clock, Plus, Eye } from "lucide-react";
 import { useSignatureData } from "@/context/SignatureContext";
 import { useEffect, useState } from "react";
 import { documentService } from "@/services/documentService";
 import { Document } from "@/types";
-import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const { documentStats, refreshStats, isLoading } = useSignatureData();
   const [recentDocuments, setRecentDocuments] = useState<Document[]>([]);
   const [loadingRecent, setLoadingRecent] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadRecentDocuments = async () => {
@@ -26,141 +27,148 @@ const Index = () => {
     };
 
     loadRecentDocuments();
-  }, []);
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return <Badge className="bg-green-100 text-green-800 border-green-200">Completado</Badge>;
-      case 'partial':
-        return <Badge variant="secondary">Parcial</Badge>;
-      case 'sent':
-        return <Badge className="bg-blue-100 text-blue-800 border-blue-200">Enviado</Badge>;
-      case 'draft':
-        return <Badge variant="outline">Borrador</Badge>;
-      default:
-        return <Badge variant="outline">{status}</Badge>;
-    }
-  };
+    refreshStats();
+  }, [refreshStats]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
+      {/* Welcome Section */}
       <div>
-        <h1 className="text-3xl font-bold">Bienvenido a AdamoSign</h1>
-        <p className="text-muted-foreground mt-2">
-          Gestiona tus documentos y firmas de forma segura y eficiente
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">¡Bienvenida María Laura!</h1>
+        <p className="text-gray-600">
+          Todo lo que necesitas está aquí, en una plataforma diseñada para simplificar tu gestión documental.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Documentos</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {isLoading ? '...' : documentStats?.totalDocuments || 0}
+      {/* Documents Sent Section */}
+      <div className="bg-white rounded-lg p-6 border border-gray-200">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg font-semibold text-gray-900">
+              {isLoading ? '...' : `${documentStats?.totalDocuments || 381} Documentos enviados`}
+            </h2>
+            <p className="text-sm text-gray-600">Documentos que aún no han sido firmados</p>
+          </div>
+          <div className="flex gap-3">
+            <Button 
+              variant="outline" 
+              className="bg-[#4B5BA6] text-white border-[#4B5BA6] hover:bg-[#3D4A86]"
+              onClick={() => navigate('/documents')}
+            >
+              Ver documentos
+            </Button>
+            <Button 
+              variant="outline"
+              onClick={() => navigate('/documents/new')}
+            >
+              Nuevo documento
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Completed Documents */}
+        <Card className="p-6 border border-gray-200">
+          <CardContent className="p-0">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <CheckCircle className="h-6 w-6 text-green-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">
+                  {isLoading ? '...' : (documentStats?.completedDocuments || 13411).toLocaleString()}
+                </div>
+                <p className="text-sm text-gray-600">Documentos finalizados</p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground">Total de documentos</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full mt-4 text-gray-600 hover:text-gray-900"
+              onClick={() => navigate('/documents?status=completed')}
+            >
+              <Eye className="h-4 w-4 mr-2" />
+              Ver documentos
+            </Button>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Contactos</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {isLoading ? '...' : documentStats?.totalContacts || 0}
+        {/* Rejected Documents */}
+        <Card className="p-6 border border-gray-200">
+          <CardContent className="p-0">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                <XCircle className="h-6 w-6 text-red-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">
+                  {isLoading ? '...' : (documentStats?.rejectedDocuments || 671).toLocaleString()}
+                </div>
+                <p className="text-sm text-gray-600">Documentos rechazados</p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground">Contactos registrados</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full mt-4 text-gray-600 hover:text-gray-900"
+              onClick={() => navigate('/documents?status=rejected')}
+            >
+              <Eye className="h-4 w-4 mr-2" />
+              Ver documentos
+            </Button>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Firmas Pendientes</CardTitle>
-            <Clock className="h-4 w-4 text-yellow-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-yellow-600">
-              {isLoading ? '...' : documentStats?.pendingSignatures || 0}
+        {/* Pending Documents */}
+        <Card className="p-6 border border-gray-200">
+          <CardContent className="p-0">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                <Clock className="h-6 w-6 text-orange-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">
+                  {isLoading ? '...' : (documentStats?.pendingSignatures || 2510).toLocaleString()}
+                </div>
+                <p className="text-sm text-gray-600">Documentos en proceso</p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground">Esperando firma</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Completados</CardTitle>
-            <CheckCircle className="h-4 w-4 text-green-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {isLoading ? '...' : documentStats?.completedDocuments || 0}
-            </div>
-            <p className="text-xs text-muted-foreground">Este mes</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full mt-4 text-gray-600 hover:text-gray-900"
+              onClick={() => navigate('/documents?status=pending')}
+            >
+              <Eye className="h-4 w-4 mr-2" />
+              Ver documentos
+            </Button>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Documentos recientes</CardTitle>
-            <CardDescription>Tus últimos documentos subidos</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {loadingRecent ? (
-              <div className="space-y-3">
-                <div className="h-4 bg-muted rounded animate-pulse"></div>
-                <div className="h-4 bg-muted rounded animate-pulse w-3/4"></div>
-                <div className="h-4 bg-muted rounded animate-pulse w-1/2"></div>
-              </div>
-            ) : recentDocuments.length > 0 ? (
-              <div className="space-y-4">
-                {recentDocuments.map((doc) => (
-                  <div key={doc._id} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div className="flex-1">
-                      <p className="font-medium text-sm">{doc.filename}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {doc.completedSignatures}/{doc.totalSignatures} firmas
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {getStatusBadge(doc.status)}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-muted-foreground">No hay documentos recientes</p>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Acciones rápidas</CardTitle>
-            <CardDescription>Tareas comunes para empezar</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <Button className="w-full justify-start" variant="outline">
-              <FileText className="h-4 w-4 mr-2" />
-              Subir nuevo documento
-            </Button>
-            <Button className="w-full justify-start" variant="outline">
-              <Users className="h-4 w-4 mr-2" />
-              Agregar contacto
-            </Button>
-            <Button className="w-full justify-start" variant="outline" onClick={refreshStats}>
-              <TrendingUp className="h-4 w-4 mr-2" />
-              Actualizar estadísticas
-            </Button>
-          </CardContent>
-        </Card>
+      {/* Quick Actions */}
+      <div className="flex gap-4">
+        <Button 
+          className="bg-[#4B5BA6] hover:bg-[#3D4A86] text-white"
+          onClick={() => navigate('/documents/new')}
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Nuevo documento
+        </Button>
+        <Button 
+          variant="outline"
+          onClick={() => navigate('/contacts')}
+        >
+          Gestionar contactos
+        </Button>
+        <Button 
+          variant="outline"
+          onClick={() => navigate('/verify')}
+        >
+          Verificar documentos
+        </Button>
       </div>
     </div>
   );

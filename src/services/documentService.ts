@@ -74,11 +74,11 @@ export const documentService = {
     await new Promise(resolve => setTimeout(resolve, 500));
     
     const stats: DocumentStats = {
-      totalDocuments: mockDocuments.length,
-      pendingSignatures: mockDocuments.reduce((acc, doc) => acc + doc.pendingSignatures, 0),
-      completedDocuments: mockDocuments.filter(doc => doc.status === 'completed').length,
-      totalContacts: 25, // Mock number
-      monthlyVerifications: 12 // Mock number
+      totalDocuments: 381,
+      completedDocuments: 13411,
+      pendingSignatures: 2510,
+      rejectedDocuments: 671,
+      totalContacts: 1250,
     };
     
     return stats;

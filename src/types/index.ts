@@ -63,10 +63,10 @@ export interface Document {
 
 export interface DocumentStats {
   totalDocuments: number;
-  pendingSignatures: number;
   completedDocuments: number;
+  pendingSignatures: number;
+  rejectedDocuments: number;
   totalContacts: number;
-  monthlyVerifications: number;
 }
 
 export interface SignatureEvent {

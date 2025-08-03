@@ -1,0 +1,13 @@
+{
+  "app": {
+    "name": "AdamSign - ENV",
+    "mocks": false,
+    "local": "http://localhost:3500"
+  },
+  "api": {
+    "base": "http://localhost:3500/api",
+    "auth": "http://localhost:3500/api/auth"
+  },
+  "i18nDebug": false,
+  "cloudEnv": "dev"
+}

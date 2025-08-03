@@ -1,0 +1,31 @@
+{
+  "name": "adamo-sign-jobs-microservice",
+  "version": "1.0.0",
+  "description": "Backend development for Adamo Sign Jobs Microservice",
+  "main": "jobs.js",
+  "scripts": {
+    "dev": "nodemon --watch src/**/*.ts --exec ts-node src/jobs.ts",
+    "start": "node dist/jobs.js",
+    "build": "tsc",
+    "prune:prod": "npm prune --production",
+    "zip:dist": "rm -rf dist.zip && cd dist && zip -r ../dist.zip * && cd ..",
+    "zip:nodejs": "rm -rf nodejs.zip && mkdir -p nodejs && cp -r node_modules nodejs/node_modules && zip -r nodejs.zip nodejs"
+  },
+  "author": "Alvaro Chico",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.821.0",
+    "amqplib": "^0.10.8",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.7",
+    "@types/aws-lambda": "^8.10.149",
+    "@types/node": "^22.13.10",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

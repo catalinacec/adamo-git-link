@@ -1,0 +1,767 @@
+{
+  "cancel": "Cancel",
+  "continue": "Continue",
+  "delete": "Delete",
+  "accept": "Yes, I accept",
+  "edit": "Edit",
+  "editName": "Edit name",
+  "editContact": "Edit contact",
+  "deleteContact": "Delete contact",
+  "viewDocument": "View document",
+  "name": "Name",
+  "email": "Email",
+  "actions": "Actions",
+  "contacts": "Contacts",
+  "addContact": "Add contact",
+  "save": "Save",
+  "deleteSelected": "Delete selected",
+  "resetFilter": "Reset filters",
+  "noResults": "No results found.",
+  "inputSearchContactPlaceholder": "Search contact...",
+  "newDocument": "New Document",
+  "backDraft": "Back to draft",
+  "saveInDraft": "Save as Draft",
+  "sendDocument": "Send Document",
+  "nextStep": "Next Step",
+  "documentName": "Document Name",
+  "inputDocumentNamePlaceholder": "Enter a name for the document...",
+  "participantsDocument": "Document Participants",
+  "signDocument": "I will sign this document",
+  "contact": "Contact",
+  "searchContact": "Search Contact",
+  "participants": "Participants",
+  "participant": "Participant",
+  "sent": "Sent",
+  "Global": {
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "delete": "Delete",
+    "accept": "Yes, I accept",
+    "acceptEnter": "Accept",
+    "edit": "Edit",
+    "update": "Update",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "change": "Change",
+    "es": "Spanish",
+    "en": "English"
+  },
+  "auth": {
+    "invalidCredentials": "The username and password do not match. Please check.",
+    "serverError": "No connection to the server, please check your internet connection.",
+    "internalServerError": "An internal server error occurred. Please try again later.",
+    "tooManyAttempts": "Too many attempts. Please try again later.",
+    "passwordUpdateSuccess": "Password has been updated successfully.",
+    "passwordUpdateError": "Error updating password. Please try again."
+  },
+  "addContactModal": {
+    "description": "Complete the contact's personal information below:"
+  },
+  "searchContactModal": {
+    "title": "Search contact",
+    "description": "Search a contact by name or email to add it to the document:",
+    "noResults": "The contact you are searching for doesn't exist",
+    "loading": "Searching for contacts...",
+    "errorSearch": "Failed to search for the contact"
+  },
+  "steps": {
+    "first": "Upload the document",
+    "second": "Add participants",
+    "third": "Place the signatures",
+    "fourth": "Summary"
+  },
+  "documentResume": {
+    "title": "Document Participants",
+    "moreOptions": "More Options",
+    "option1": "Send a signing reminder every 3 days.",
+    "option2": "Allow document rejection.",
+    "option3": "Set a signing deadline."
+  },
+  "contactPage": {
+    "deleteError": "An error occurred while deleting the contacts. Please try again.",
+    "fetchError": "An error occurred while loading the contacts. Please try again.",
+    "loading": "Loading contacts..."
+  },
+  "participantForm": {
+    "participantNamePlaceholder": "Participant's First Name",
+    "participantLastNamePlaceholder": "Participant's Last Name",
+    "participantEmailPlaceholder": "Participant's Email Address",
+    "addToContacts": "Add signer to my contact list",
+    "requireVerifications": "Request verification to sign the document",
+    "verificationsDescription": "Enable the types of verification you want to request from the participant. Each additional method you use strengthens the security of your signature!",
+    "basicVerifications": "Basic Authentication",
+    "proVerifications": "Robust Authentication",
+    "plan": "Upgrade Plan",
+    "contact": "Contact Sales",
+    "planDescription": "Interested in Robust Authentication? Upgrade your plan and unlock new possibilities.",
+    "planFreeDescription": "Interested in this service? Subscribe to Adamo ID and access new possibilities.",
+    "validation": {
+      "too_small": "This field is required.",
+      "custom": "The email is duplicated",
+      "email_exists": "The email already exists",
+      "invalid_string": "Please enter a valid email address",
+      "min": "Must contain at least 8 characters.",
+      "uppercase": "Must contain at least one uppercase letter.",
+      "lowercase": "Must contain at least one lowercase letter.",
+      "number": "Must contain at least one number.",
+      "special": "Must contain at least one special character.",
+      "match": "Passwords do not match."
+    }
+  },
+  "contactForm": {
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "Enter the first name",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Enter the last name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter the email address",
+    "phoneNumberLabel": "Phone Number",
+    "phoneNumberPlaceholder": "Enter the number",
+    "companyLabel": "Company",
+    "companyPlaceholder": "Enter the company name",
+    "positionLabel": "Position",
+    "positionPlaceholder": "Enter the position in the company",
+    "addressLabel": "Address",
+    "addressPlaceholder": "Enter the company address",
+    "countryLabel": "Country",
+    "countryPlaceholder": "Enter the country",
+    "cityLabel": "City and Region",
+    "cityPlaceholder": "Enter the city and region",
+    "requiredFields": "Fields marked with (*) are required",
+    "validation": {
+      "firstNameRequired": "First name is required",
+      "firstNameMaxLength": "First name must be 50 characters or less",
+      "lastNameRequired": "Last name is required",
+      "lastNameMaxLength": "Last name must be 50 characters or less",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "emailDuplicateError": "This email address already exists",
+      "companyMaxLength": "Company name must be 100 characters or less",
+      "positionMaxLength": "Position must be 50 characters or less",
+      "phoneCountryCodeRequired": "Both phone number and country code are required",
+      "genericError": "An error occurred while adding the contact"
+    }
+  },
+  "editContactModal": {
+    "title": "Contact information",
+    "titleEdit": "Edit contact information",
+    "editContact": "Edit information"
+  },
+  "deleteContactModal": {
+    "title": "Delete Selected Contacts",
+    "description": "Are you sure you want to delete the selected contacts?",
+    "accept": "Yes, delete"
+  },
+  "toasts": {
+    "deletedContacts": "Contacts have been deleted successfully.",
+    "addedContact": "Contact has been added successfully.",
+    "updatedContact": "Contact has been updated successfully."
+  },
+  "privacyModalText": {
+    "title": "Terms and Conditions and Privacy Policy",
+    "description": "Before continuing, you need to accept the Terms and Conditions and Privacy Policy.<br></br><br></br>Please take a moment to read them carefully.",
+    "termsAndPrivacy": "I accept the <terms>Terms and Conditions</terms> and <privacy>Privacy Policy</privacy>."
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "dataPrivacyNotice": "Privacy notice and personal data processing",
+    "content": {
+      "paragraph1": "You have already authorized the processing of your personal data to the Controller of the service you use. As part of this process, and in compliance with current regulations, we inform you that ADAMO S.A.S. acts as a technology provider and Data Processor, performing technical operations on behalf of the Controller.",
+      "paragraph2": "ADAMO will not use your data for its own purposes and will process it exclusively according to the instructions received and in accordance with strict security and confidentiality standards.",
+      "paragraph3": "For more information about how we protect your data, please consult our Data Processing Policy here:",
+      "link": "https://adamoservices.co",
+      "paragraph4": "If you have any additional concerns, you can write to us at: contact@adamoservices.co"
+    }
+  },
+  "languageToggle": {
+    "label": "Cambiar a:",
+    "language": "Español"
+  },
+  "SignInPageText": {
+    "title": "Sign in to your account",
+    "placeholders": {
+      "email": "Email address",
+      "password": "Password"
+    },
+    "forgotPasswordText": "Forgot your password? <tag>Click here</tag>",
+    "buttons": {
+      "signIn": "Sign In"
+    },
+    "validation": {
+      "too_small": "Must contain at least 8 characters.",
+      "invalid_string": "Must contain at least one uppercase letter, one lowercase letter, one number and one special character.",
+      "no_spaces": "Password cannot contain spaces."
+    }
+  },
+  "ResetPage": {
+    "title": "Reset Password",
+    "toast": "Your password has been updated successfully. Sign in to your account.",
+    "emailStep": {
+      "title": "Reset Password",
+      "description": "Enter your email address where we will send a code to reset your password:",
+      "emailPlaceholder": "example@email.com",
+      "nextButton": "Continue"
+    },
+    "otpStep": {
+      "description": "Enter the code we have sent to your email at: ",
+      "resendText": "Didn't receive the code?",
+      "resendTextTimer": "<tag>Resend in {timer}</tag>",
+      "resendBlockedTimer": "Too many requests. Try again in {timer}",
+      "resendButton": "Resend code.",
+      "nextButton": "Continue",
+      "validation": {
+        "required": "Verification code is required.",
+        "exactLength": "The verification code must be exactly 6 digits.",
+        "alphanumericOnly": "The verification code must contain only letters and numbers.",
+        "noSpaces": "The verification code cannot contain spaces."
+      }
+    },
+    "passwordStep": {
+      "title": "Reset Password",
+      "description": "Enter your new password below:",
+      "passwordPlaceholder": "Enter your new password",
+      "passwordHelperText": "At least 8 characters, one uppercase letter, one lowercase letter, a number, and a special character (!@#$%^&*()_+-=[]|;:,.<>?).",
+      "confirmPasswordPlaceholder": "Repeat your new password",
+      "submitButton": "Continue",
+      "validation": {
+        "too_small": "Must contain at least 8 characters.",
+        "invalid_string": "Must contain at least one uppercase letter, one lowercase letter, one number and one special character (!@#$%^&*()_+-=[]|;:,.<>?).",
+        "no_spaces": "Password cannot contain spaces.",
+        "custom": "The passwords entered do not match, please verify.",
+        "required": "This field is required."
+      }
+    },
+    "invalid": {
+      "email": "The email address entered is not valid.",
+      "emailNotFound": "The email address is not registered in our system.",
+      "accountBlocked": "This account has been blocked. Please contact support.",
+      "code": "The verification code entered is not valid.",
+      "otpExpired": "The verification code has expired. Please request a new one.",
+      "otpInvalid": "Invalid verification code. {remaining} attempts remaining.",
+      "maxOtpAttempts": "You have exceeded the maximum number of verification code attempts.",
+      "password": "The password entered is not valid.",
+      "weakPassword": "The password is too weak. Please choose a stronger password.",
+      "sessionExpired": "Your session has expired. Please start the process again.",
+      "maxAttempts": "You have exceeded the maximum number of attempts for this Email Address.",
+      "temporaryBlock": "Too many failed attempts. Please try again in 15 minutes.",
+      "emailSendingBlocked": "Too many email requests. Please try again in 30 minutes.",
+      "tooManyRequests": "Too many requests. Please wait a moment and try again.",
+      "serverError": "Server error. Please try again later.",
+      "networkError": "Network connection error. Please check your internet connection.",
+      "genericError": "An unexpected error occurred. Please try again."
+    },
+    "success": {
+      "emailSent": "We have sent a verification code to your email address.",
+      "otpVerified": "Verification code validated successfully.",
+      "passwordChanged": "Your password has been changed successfully."
+    }
+  },
+  "Sidebar": {
+    "home": "Home",
+    "documents": "Documents",
+    "contacts": "Contacts",
+    "verifications": "Verifications",
+    "notifications": "Notifications",
+    "profile": "My profile",
+    "logout": "Log out"
+  },
+  "AppHome": {
+    "title": "Home",
+    "welcome": {
+      "greeting": "Welcome, {name}!",
+      "description": "Everything you need is here, in a platform designed to simplify your document management."
+    },
+    "plan": {
+      "currentPlan": "Starter Plan",
+      "upgradeTextMobile": "Upgrade your plan!",
+      "upgradeText": "Upgrade your plan now!"
+    },
+    "documents": {
+      "count": "{count} Documents Sent",
+      "description": "Includes documents in progress, rejected by invitees, and completed.",
+      "viewButton": "View documents",
+      "newButton": "New document"
+    },
+    "Stats": {
+      "completedDocuments": {
+        "title": "Completed Documents",
+        "buttonText": "View documents"
+      },
+      "rejectedDocuments": {
+        "title": "Rejected Documents",
+        "buttonText": "View documents"
+      },
+      "inProcessDocuments": {
+        "title": "Documents in Process",
+        "buttonText": "View documents"
+      }
+    }
+  },
+  "AppDocuments": {
+    "title": "Documents",
+    "description": "Simplify, automate, and optimize every aspect of your documents in one place.",
+    "NewDocument": {
+      "title": "New Document",
+      "description": "Register a new document. Drag your file here or:",
+      "buttonText": "Select from Computer",
+      "fileSizeNote": "Max size: 50 MB in .pdf or .doc format",
+      "unsupporedFile": "Unsupported file type. Please upload a PDF, Word, PowerPoint, JPG, or PNG.",
+      "validFile": "Please select a valid file first.",
+      "conversionFailed": "Conversion failed or result is missing the file URL",
+      "conversionUnknown": "Conversion failed: An unknown error occurred.",
+      "uploadingDocument": "Uploading document..."
+    },
+    "Stats": {
+      "PendingDocuments": {
+        "title": "{count} Pending",
+        "description": "Documents pending your signature.",
+        "buttonText": "View Pending",
+        "in_progress": "In Progress"
+      },
+      "DraftDocuments": {
+        "title": "{count} Drafts",
+        "description": "Continue your document from where you left off.",
+        "buttonText": "View drafts",
+        "searchPlaceholder": "Search documents...",
+        "refresh": "Refresh",
+        "loading": "Loading documents...",
+        "errorLoading": "Error loading documents",
+        "deletedSuccess": "Documents have been successfully deleted.",
+        "deleteSelected": "Delete selected",
+        "noDocuments": "No documents to display.",
+        "resetFilters": "Reset filters",
+        "previousPage": "Previous",
+        "nextPage": "Next",
+        "columnDocumentName": "Document Name",
+        "columnDate": "Date",
+        "columnParticipants": "Participants",
+        "columnStatus": "Status",
+        "columnRegister": "Register",
+        "actions": "Actions",
+        "invalidDate": "Invalid date",
+        "openDocument": "Open document {filename}",
+        "status": {
+          "completed": "Completed",
+          "pending": "Pending",
+          "rejected": "Rejected",
+          "draft": "draft",
+          "default": "Unknown"
+        },
+        "deleteError": "Cannot delete the document because its current status does not allow deletion.",
+        "deleteTitleSingle": "Delete document",
+        "deleteTitleMultiple": "Delete {count} documents",
+        "deleteDescriptionSingle": "Are you sure you want to delete this document? This action cannot be undone.",
+        "deleteDescriptionMultiple": "Are you sure you want to delete these {count} documents? This action cannot be undone.",
+        "cancel": "Cancel",
+        "confirmDelete": "Yes, delete",
+        "deleting": "Deleting...",
+        "latestDocuments": "Latest documents",
+        "viewAll": "View all"
+      },
+      "DeletedDocuments": {
+        "title": "{count} Deleted",
+        "description": "Review your deleted documents.",
+        "buttonText": "View Trash",
+        "deleted": "Deleted"
+      }
+    },
+    "TablePending": {
+      "loading": "Loading documents...",
+      "fetchError": "Error loading documents",
+      "untitled": "Untitled",
+      "invalidDate": "Invalid date",
+      "documentName": "Document Name",
+      "date": "Date",
+      "participants": "Participants",
+      "sign": "Sign",
+      "actions": "Actions",
+      "resetFilter": "Reset filters",
+      "noResults": "No results found."
+    },
+    "TableContainer": {
+      "heading": "Pending for my signature",
+      "pending": "Pending",
+      "searchPlaceholder": "Search documents...",
+      "deleteSelected": "Delete selected",
+      "deletedSuccess": "Documents have been deleted successfully.",
+      "noDocuments": "No documents to show",
+      "NoAuthDocuments": "You don't have permissions to view this page.",
+      "error": "An error occurred while loading the documents. Please try again later."
+    },
+    "TrashTable": {
+      "documentsDeleted": "{count} deleted documents",
+      "searchPlaceholder": "Search documents...",
+      "deleteSelected": "Delete selected",
+      "restoreSelected": "Restore selected",
+      "autoDeleteInfo": "Documents in the trash for more than 30 days will be automatically deleted.",
+      "deleteNow": "Delete now",
+      "noDocuments": "No documents to display.",
+      "resetFilters": "Reset filters",
+      "deleteConfirmation": "The documents have been successfully deleted.",
+      "restoreConfirmation": "The documents have been successfully restored.",
+      "errorDeleting": "There was an error trying to delete the selected documents",
+      "restoreError": "There was an error trying to restore the selected document"
+    },
+    "RestoreModal": {
+      "title": "Restore selected documents",
+      "description": "Restoring the selected documents will move them back to the documents page, allowing the involved users to access them again.",
+      "cancel": "Cancel",
+      "restore": "Restore"
+    }
+  },
+  "DocumentStatus": {
+    "all": "All states",
+    "completed": "Completed",
+    "signed": "Signed",
+    "hasNotSeen": "Has not yet seen the document",
+    "rejectedQuote": "Reason for rejection: ",
+    "inProgress": "In Progress",
+    "in_progress": "In Process",
+    "deleted": "Deleted",
+    "delete": "Delete",
+    "draft": "Draft",
+    "rejected": "Rejected",
+    "sent": "Sent",
+    "waiting": "Waiting for signature",
+    "recycler": "Deleted",
+    "searchPlaceholder": "Search documents...",
+    "resetFilters": "Reset filters",
+    "noDocuments": "No documents to display.",
+    "deleteSelected": "Delete selected",
+    "open": "Open document",
+    "heading": "Documents",
+    "loading": "Loading documents...",
+    "deletedSuccess": "Documents have been successfully deleted.",
+    "deleteError": "Error deleting documents.",
+    "deleteTitleSingle": "Delete document",
+    "deleteTitleMultiple": "Delete {count} documents",
+    "deleteDescriptionSingle": "Are you sure you want to delete this document? This action cannot be undone.",
+    "deleteDescriptionMultiple": "Are you sure you want to delete these {count} documents? This action cannot be undone.",
+    "confirmDelete": "Yes, delete",
+    "cancel": "Cancel",
+    "createdAt": "Created on",
+    "at": "at",
+    "deleting": "Deleting...",
+    "copyLink": "Copy to clipboard",
+    "viewDocument": "View document",
+    "viewSignedDocument": "View signed document",
+    "registerBlockchain": "Register on blockchain",
+    "registeredBlockchain": "Document registered on blockchain",
+    "registerBlockchainSuccess": "The document has been successfully registered on the blockchain.",
+    "registerBlockchainError": "Error registering the document on the blockchain.",
+    "smartContractId": "Smart contract",
+    "noSignedVersion": "There is no signed version of the document.",
+    "participantsDocument": "Document Participants",
+    "hash": "Document hash",
+    "transactionId": "Transaction ID",
+    "noDocumentUrl": "There is no document URL available.",
+    "signatures": "Signatures",
+    "registerBlockchainTitle": "Register Document on Blockchain",
+    "registerBlockchainDescription": "Registering your document on the blockchain ensures its authenticity and integrity, providing a secure and immutable record of its existence.",
+    "accept": "Accept",
+    "register": "Register",
+    "sendNotification": "Send signature reminder"
+  },
+  "SignDocumentModal": {
+    "title": "Sign document",
+    "subtitle": "Select the type of signature to perform on the document below:",
+    "cancelButton": "Cancel",
+    "signButton": "Sign",
+    "tabDrawButton": "Draw",
+    "tabWriteButton": "Write",
+    "tabUploadButton": "Upload",
+    "tabDraw": {
+      "title": "Draw signature",
+      "subtitle": "Draw your signature below:"
+    },
+    "tabWrite": {
+      "title": "Write signature",
+      "subtitle": "Select a font and write your signature:",
+      "selectTrigger": "Select font"
+    },
+    "tabUpload": {
+      "title": "Upload signature",
+      "subtitle": "Drag a file or select from the computer:",
+      "uploadButton": "Select from the computer",
+      "uploadRequirements": "Max size 50 MB in .jpg or .png format",
+      "uploading": "Uploading signature..."
+    }
+  },
+  "EditDocNameModal": {
+    "title": "Edit Document Name",
+    "description": "Enter a name for the document:"
+  },
+  "EditDocModal": {
+    "title": "Edit Participant Information",
+    "description": "Edit the personal information and requested verifications:",
+    "inputFirstNamePlaceholder": "Participant's First Name",
+    "inputLastNamePlaceholder": "Participant's Last Name",
+    "inputEmailPlaceholder": "Participant's Email Address",
+    "requireVerificationLabel": "Request verification to sign the document",
+    "basicVerifications": "Basic Authentication",
+    "proVerifications": "Robust Authentication",
+    "plan": "Upgrade Plan",
+    "planDescription": "Interested in Robust Authentication? Upgrade your plan and unlock new possibilities."
+  },
+  "editParticipant": "Edit Participant",
+  "deleteParticipant": "Delete Participant",
+  "noVerifications": "No verifications requested",
+  "verifications": {
+    "selfie": {
+      "title": "Selfie",
+      "description": "The participant captures a selfie as visual proof. This will not be validated; it will only be stored as backup within the signature record."
+    },
+    "document": {
+      "title": "Identity Document Photo",
+      "description": "The participant takes a photo of their identity document. This will not be validated; it will only be stored as backup within the signature record."
+    },
+    "identity": {
+      "title": "Identity Validation",
+      "description": "Official documents (passport, ID card, or driver's license) and scanning technologies are used to confirm authenticity."
+    },
+    "facial": {
+      "title": "Facial Verification",
+      "description": "After validating the identity, the participant records a real-time video. Our system compares both images to ensure a match."
+    },
+    "phone": {
+      "title": "Phone Verification",
+      "description": "We will send a verification code via SMS to the registered phone number, which will serve as a backup for the signature."
+    },
+    "email": {
+      "title": "Email Verification",
+      "description": "We will send a verification code to the registered email address, which will serve as a backup for the signature."
+    }
+  },
+  "step4": {
+    "title": "Congratulations! The document has been successfully sent.",
+    "description": "Remember that you can also copy the signing link and share it with each participant through your preferred communication channel.",
+    "createdAt": "Created on",
+    "signs": "signatures",
+    "participants": "Document Participants"
+  },
+  "step1": {
+    "Signatory": "Signatory"
+  },
+  "VerificationsPage": {
+    "title": "Verifications",
+    "description": "Enter the document’s hash to verify its signature and ensure the document’s integrity.",
+    "checkFormHeading": "Verify the delivered signature",
+    "checkFormInputPlaceholder": "Enter the document’s hash",
+    "checkButton": "Verify",
+    "checkErrorNote": "The entered signature is not valid or is not registered on the blockchain.",
+    "checkSuccessNote": "The entered signature is valid. Below you can review its information.",
+    "infoFormTitle": "Signature Information",
+    "infoFormInputNameLabel": "Signer’s First Name",
+    "infoFormInputLastNameLabel": "Signer’s Last Name",
+    "infoFormInputDocIdLabel": "Document Number",
+    "infoFormInputDocTypeLabel": "Document Type"
+  },
+  "ProfilePage": {
+    "title": "My Profile",
+    "updateButton": "Update Information",
+    "profileImageAlt": "Profile Image",
+    "loading": "Loading...",
+    "success": "Your profile information has been successfully updated.",
+    "error": "An error occurred while loading your profile information.",
+    "retry": "Retry",
+    "card": {
+      "security": {
+        "title": "Security",
+        "description": "Update your password and/or enable Two-Factor Authentication (2FA) for enhanced security.",
+        "buttonPassword": "Change Password",
+        "button2FA": "Enable 2FA",
+        "deactivateButton2FA": "Disable 2FA"
+      },
+      "plans": {
+        "title": "Plans & Billing",
+        "description": "Manage your billing, access your current plan, and discover more available plans.",
+        "button": "Manage"
+      },
+      "lang": {
+        "title": "Language",
+        "description": "Preferred system language: ",
+        "button": "Change Language"
+      }
+    }
+  },
+  "ProfileModal": {
+    "title": "Update Personal Information",
+    "modalText": "If you need to change your email address, please contact <link>Customer Service.</link>",
+    "invalidType": "Invalid file type. Please upload a valid image."
+  },
+  "LangModal": {
+    "title": "Change Language",
+    "description": "Select your preferred language:"
+  },
+  "PasswordModal": {
+    "title": "Change Password",
+    "description": "To continue, please enter your current password:",
+    "descriptionNewPassword": "Enter your new password:",
+    "inputPasswordPlaceholder": "Enter your current password",
+    "inputNewPasswordPlaceholder": "New password",
+    "inputNewPasswordHelperText": "Must be at least 8 characters long, include one uppercase letter, a number, and a special character.",
+    "inputConfirmPasswordPlaceholder": "Repeat new password",
+    "buttonChangePassword": "Change Password",
+    "toast": "Your password has been successfully updated.",
+    "error": "Error changing password. Please verify that the current password is correct and that the new passwords match."
+  },
+  "Activate2FAModal": {
+    "title": "Enable Two-Factor Authentication",
+    "description": "To get started, download an authentication app on your mobile device, for example, <link>Google Authenticator.</link>",
+    "descriptionQr": "Open the app and scan the following QR, or manually enter the code below:",
+    "alert": "Keep this code in a safe place. If you lose your phone, it will help you restore your Authenticator. Otherwise, the process may take at least 7 days.",
+    "descriptionOTP": "Enter the 6-digit code provided by the authentication app.",
+    "titleSuccess": "Authenticator Enabled",
+    "descriptionSuccess": "You have successfully enabled Two-Factor Authentication to protect your account.",
+    "errorGeneratingQR": "Error generating QR code. Please try again.",
+    "errorOTPLength": "Please enter a valid 6-digit code.",
+    "errorInvalidOTP": "Please verify the verification code."
+  },
+  "Deactivate2FAModal": {
+    "title": "Disable Two-Factor Authentication",
+    "description": "If you disable Two-Factor Authentication, your account security will be weakened, exposing it to unauthorized logins.",
+    "descriptionOTP": "Enter the 6-digit code provided by the authentication app.",
+    "titleSuccess": "Authenticator Disabled!",
+    "descriptionSuccess": "Two-Factor Authentication has been disabled. Your account's security is now weaker and may be exposed to unauthorized access.",
+    "deactivateButton2FA": "Disable 2FA",
+    "alert": "If you wish, you can enable it again at any time from your user profile.",
+    "errorOTPLength": "Please enter a valid 6-digit code.",
+    "errorInvalidOTP": "Please verify the verification code.",
+    "errorDeactivating2FA": "Error disabling Two-Factor Authentication. Please verify that the verification code is correct."
+  },
+  "NotificationsPage": {
+    "title": "Notifications",
+    "noNotifications": "You don't have any notifications yet...",
+    "showLess": "Show less"
+  },
+  "LogoutModal": {
+    "title": "Logout",
+    "description": "Are you sure you want to log out?",
+    "logoutButton": "Logout"
+  },
+  "ChatButton": {
+    "text": "Need help? We will answer all your questions"
+  },
+  "ContactSalesModal": {
+    "title": "Contact Sales",
+    "description": "Select the service you are interested in and leave us your message or comment. One of our specialists will contact you shortly.",
+    "messagePlaceholder": "Message or comments...",
+    "sendButton": "Send message"
+  },
+  "CancelDocumentModal": {
+    "title": "Discard Document",
+    "description": "Are you sure you want to discard this document?",
+    "discardButton": "Discard"
+  },
+  "AddParticipantModal": {
+    "title": "Add Participant",
+    "description": "Enter the participant's personal information and requested verifications:",
+    "addButton": "Add Participant"
+  },
+  "SignItem": {
+    "noName": " ",
+    "sign": "Sign",
+    "removeSignature": "Remove Signature",
+    "copySignature": "Duplicate",
+    "updateSignature": "Rotate",
+    "zoomSignature": "Resize",
+    "signedBy": "Signed by AdamoSign:"
+  },
+  "UpdatePasswordForm": {
+    "title": "To continue, update your temporary access password:",
+    "passwordPlaceholder": "New password",
+    "confirmPasswordPlaceholder": "Repeat new password",
+    "passwordHelperText": "At least 8 characters, one uppercase letter, one lowercase letter, a number, and a special character (!@#$%^&*()_+-=[]|;:,.<>?).",
+    "submitButton": "Update password",
+    "validation": {
+      "too_small": "Must contain at least 8 characters.",
+      "invalid_string": "Must contain at least one uppercase letter, one lowercase letter, one number and one special character (!@#$%^&*()_+-=[]|;:,.<>?).",
+      "no_spaces": "Password cannot contain spaces.",
+      "custom": "The passwords entered do not match, please verify.",
+      "required": "This field is required."
+    }
+  },
+  "DocMenuContent": {
+    "addParticipant": "Add Participant",
+    "sign": "Sign document"
+  },
+  "UploadDocStep1": {
+    "validation": {
+      "too_small": "Document name is required."
+    }
+  },
+  "SignPageContainer": {
+    "noName": " ",
+    "at": "at",
+    "noDocumentName": " ",
+    "pendingHeading": "Pending Signatures",
+    "viewSigns": "View Signatures",
+    "toastSigned": "The document has been successfully signed."
+  },
+  "ParticipantCard": {
+    "rejected": "Rejected on ",
+    "signed": "Signed on ",
+    "pending": "Pending signature...",
+    "send": "send",
+    "currentUser": "You"
+  },
+  "sendMethods": {
+    "email": "Send by email",
+    "whatsapp": "Send by WhatsApp",
+    "telegram": "Send by Telegram"
+  },
+  "fileManager": {
+    "title": "My Files",
+    "loading": "Loading...",
+    "newFolder": "New Folder",
+    "searchFiles": "Search file...",
+    "searchFolders": "Search folders and files...",
+    "searchFilesAndFolders": "Search files and folders...",
+    "uploadFile": "Upload File",
+    "card": {
+      "title": "My Files",
+      "description": "Organize and manage your signed and completed documents.",
+      "buttonText": "View and organize files"
+    },
+    "moveDocumentSuccess": "File moved successfully to folder \"{folderName}\".",
+    "moveDocumentsSuccess": "Files moved successfully to folder \"{folderName}\".",
+    "removeFromFolderSuccess": "Document removed from folder successfully.",
+    "folders": {
+      "title": "Folders",
+      "filesCount": "Files",
+      "documentsCount": "DOCUMENTS",
+      "emptyFolder": "No documents in this folder",
+      "noSearchResults": "No documents match your search"
+    },
+    "documentMenu": {
+      "searchFolder": "Search folder...",
+      "moveTo": "Move to",
+      "removeFromFolder": "Remove from \"My files\"",
+      "noFoldersFound": "No folders found",
+      "folderContent": "Folder content"
+    },
+    "documents": {
+      "title": "Documents",
+      "readyToMove": "Ready to move",
+      "instruction": "Select, drag and drop or choose the folder from the context menu where you want to move your completed document.",
+      "noDocuments": "No documents to display",
+      "noResults": "No documents found",
+      "table": {
+        "documentName": "DOCUMENT NAME",
+        "date": "DATE",
+        "participants": "PARTICIPANTS",
+        "status": "STATUS"
+      }
+    },
+    "modal": {
+      "createFolder": {
+        "title": "New folder",
+        "description": "Create a new folder to organize your files:",
+        "placeholder": "Folder name",
+        "cancel": "Cancel",
+        "create": "Create folder"
+      }
+    }
+  }
+}

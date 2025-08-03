@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* AdamoSign Colors */
+    --adamo-sign-25: 252 252 253;
+    /* #fcfcfd */
+    --adamo-sign-50: 248 249 252;
+    /* #f8f9fc */
+    --adamo-sign-100: 234 236 245;
+    /* #eaecf5 */
+    --adamo-sign-200: 213 217 235;
+    /* #d5d9eb */
+    --adamo-sign-300: 175 181 217;
+    /* #afb5d9 */
+    --adamo-sign-400: 113 123 188;
+    /* #717bbc */
+    --adamo-sign-500: 78 91 166;
+    /* #4e5ba6 */
+    --adamo-sign-600: 62 71 132;
+    /* #3e4784 */
+    --adamo-sign-700: 54 63 114;
+    /* #363f72 */
+    --adamo-sign-800: 41 48 86;
+    /* #293056 */
+    --adamo-sign-900: 16 19 35;
+    /* #101323 */
+
+    /* AdamoID Colors */
+    --adamo-id-25: 245 251 255;
+    /* #f5fbff */
+    --adamo-id-50: 240 249 255;
+    /* #f0f9ff */
+    --adamo-id-100: 224 242 254;
+    /* #e0f2fe */
+    --adamo-id-200: 185 230 254;
+    /* #b9e6fe */
+    --adamo-id-300: 124 212 253;
+    /* #7cd4fd */
+    --adamo-id-400: 54 191 250;
+    /* #36bffa */
+    --adamo-id-500: 11 165 236;
+    /* #0ba5ec */
+    --adamo-id-600: 0 134 201;
+    /* #0086c9 */
+    --adamo-id-700: 2 106 162;
+    /* #026aa2 */
+    --adamo-id-800: 6 89 134;
+    /* #065986 */
+    --adamo-id-900: 11 74 111;
+    /* #0b4a6f */
+
+    /* AdamoPay Colors */
+    --adamo-pay-25: 246 255 252;
+    /* #f6fffc */
+    --adamo-pay-50: 240 253 249;
+    /* #f0fdf9 */
+    --adamo-pay-100: 204 251 239;
+    /* #ccfbef */
+    --adamo-pay-200: 153 246 224;
+    /* #99f6e0 */
+    --adamo-pay-300: 95 233 208;
+    /* #5fe9d0 */
+    --adamo-pay-400: 46 211 183;
+    /* #2ed3b7 */
+    --adamo-pay-500: 21 183 158;
+    /* #15b79e */
+    --adamo-pay-600: 14 147 132;
+    /* #0e9384 */
+    --adamo-pay-700: 16 117 105;
+    /* #107569 */
+    --adamo-pay-800: 18 93 86;
+    /* #125d56 */
+    --adamo-pay-900: 19 78 72;
+    /* #134e48 */
+
+    /* AdamoRisk Colors */
+    --adamo-risk-25: 251 250 255;
+    /* #fbfaff */
+    --adamo-risk-50: 245 243 255;
+    /* #f5f3ff */
+    --adamo-risk-100: 236 233 254;
+    /* #ece9fe */
+    --adamo-risk-200: 221 214 254;
+    /* #ddd6fe */
+    --adamo-risk-300: 195 181 253;
+    /* #c3b5fd */
+    --adamo-risk-400: 164 138 251;
+    /* #a48afb */
+    --adamo-risk-500: 135 91 247;
+    /* #875bf7 */
+    --adamo-risk-600: 120 57 238;
+    /* #7839ee */
+    --adamo-risk-700: 105 39 218;
+    /* #6927da */
+    --adamo-risk-800: 87 32 183;
+    /* #5720b7 */
+    --adamo-risk-900: 73 28 150;
+    /* #491c96 */
+
+    /* Neutrals Colors */
+    --neutral-25: 252 252 253;
+    /* #fcfcfd */
+    --neutral-50: 249 250 251;
+    /* #f9fafb */
+    --neutral-100: 243 244 246;
+    /* #f3f4f6 */
+    --neutral-200: 229 231 235;
+    /* #e5e7eb */
+    --neutral-300: 210 214 219;
+    /* #d2d6db */
+    --neutral-400: 157 164 174;
+    /* #9da4ae */
+    --neutral-500: 108 115 127;
+    /* #6c737f */
+    --neutral-600: 77 87 97;
+    /* #4d5761 */
+    --neutral-700: 56 66 80;
+    /* #384250 */
+    --neutral-800: 31 42 55;
+    /* #1f2a37 */
+    --neutral-900: 17 25 39;
+    /* #111927 */
+
+    /* Error Colors */
+    --error-25: 255 250 250;
+    /* #fffafa */
+    --error-50: 254 242 242;
+    /* #fef2f2 */
+    --error-100: 254 226 226;
+    /* #fee2e2 */
+    --error-200: 254 202 202;
+    /* #fecaca */
+    --error-300: 252 165 165;
+    /* #fca5a5 */
+    --error-400: 248 113 113;
+    /* #f87171 */
+    --error-500: 239 68 68;
+    /* #ef4444 */
+    --error-600: 220 38 38;
+    /* #dc2626 */
+    --error-700: 185 28 28;
+    /* #b91c1c */
+    --error-800: 153 27 27;
+    /* #991b1b */
+    --error-900: 127 29 29;
+    /* #7f1d1d */
+
+    /* Warning Colors */
+    --warning-25: 255 250 240;
+    /* #fffaf0 */
+    --warning-50: 255 251 235;
+    /* #FFFBEB */
+    --warning-100: 253 230 138;
+    /* #fde68a */
+    --warning-200: 252 211 77;
+    /* #fcd34d */
+    --warning-300: 251 191 36;
+    /* #fbbf24 */
+    --warning-400: 245 158 11;
+    /* #f59e0b */
+    --warning-500: 217 119 6;
+    /* #d97706 */
+    --warning-600: 180 83 9;
+    /* #b45309 */
+    --warning-700: 146 64 14;
+    /* #92400e */
+    --warning-800: 120 53 15;
+    /* #78350f */
+    --warning-900: 95 55 14;
+    /* #5f370e */
+
+    /* Success Colors */
+    --success-25: 251 254 252;
+    /* #fbfefc */
+    --success-50: 240 253 244;
+    /* #f0fdf4 */
+    --success-100: 220 252 231;
+    /* #dcfce7 */
+    --success-200: 187 247 208;
+    /* #bbf7d0 */
+    --success-300: 134 239 172;
+    /* #86efac */
+    --success-400: 74 222 128;
+    /* #4ade80 */
+    --success-500: 34 197 94;
+    /* #22c55e */
+    --success-600: 22 163 74;
+    /* #16a34a */
+    --success-700: 21 128 61;
+    /* #15803d */
+    --success-800: 22 101 52;
+    /* #166534 */
+    --success-900: 20 83 45;
+    /* #14532d */
+
+    --sidebar-background: var(--adamo-sign-600);
+  }
+
+  body {
+    @apply bg-neutral-50 text-base text-neutral-500 antialiased;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  .scrollable::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollable {
+    overflow-y: scroll;
+  }
+
+  .scrollable::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: rgb(var(--neutral-100));
+    border-radius: 50px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--adamo-sign-400));
+    border-radius: 50px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--adamo-sign-500));
+  }
+
+  [data-mobile-close-hidden]>[data-modal-close] {
+    @apply hidden md:inline-block;
+  }
+}
+
+/* Input Styles */
+@layer components {
+  .input-wrapper {
+    @apply w-full space-y-1 text-left;
+  }
+
+  .input {
+    @apply flex h-[50px] w-full rounded-lg border bg-white px-3 text-left text-base text-neutral-700 placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:text-neutral-400;
+  }
+
+  .input[type="button"] {
+    @apply cursor-pointer;
+  }
+
+  .input-wrapper .input-light {
+    @apply border-neutral-200 ring-offset-adamo-sign-300 focus-visible:ring-adamo-sign-600/25 disabled:bg-neutral-100;
+  }
+
+  .input-wrapper .input-dark {
+    @apply border-neutral-200 ring-offset-adamo-sign-200 focus-visible:ring-adamo-sign-300/25 disabled:bg-neutral-200;
+  }
+
+  .input-wrapper.error .input {
+    @apply border-2 border-error-500 ring-offset-2 ring-offset-error-500 focus-visible:ring-error-500/25 disabled:bg-neutral-100;
+  }
+
+  .input-label,
+  .input-helper {
+    @apply text-xs;
+  }
+
+  .input-wrapper.light .input-label,
+  .input-wrapper.light .input-helper {
+    @apply text-neutral-500;
+  }
+
+  .input-wrapper.dark .input-label,
+  .input-wrapper.dark .input-helper {
+    @apply text-neutral-300;
+  }
+
+  .input-wrapper.error .input-helper {
+    @apply text-error-500;
+  }
+}
+
+/* Badge Styles */
+@layer components {
+
+  /* Base Badge Styles */
+  .badge {
+    @apply inline-flex min-h-8 items-center gap-2 rounded-xl px-2 py-1 text-sm;
+  }
+
+  /* Negative Variants */
+  .badge.badge-negative {
+    @apply text-white;
+  }
+
+  .badge.badge-negative.badge-success {
+    @apply bg-success-500;
+  }
+
+  .badge.badge-negative.badge-process {
+    @apply bg-warning-400;
+  }
+
+  .badge.badge-negative.badge-error {
+    @apply bg-error-500;
+  }
+
+  .badge.badge-negative.badge-neutral {
+    @apply bg-neutral-400;
+  }
+
+  /* Text Variants */
+  .badge.badge-text {
+    @apply text-neutral-600;
+  }
+
+  /* Filled Variants */
+  .badge.badge-filled {
+    @apply text-neutral-700;
+  }
+
+  .badge.badge-filled.badge-success {
+    @apply bg-success-50;
+  }
+
+  .badge.badge-filled.badge-process {
+    @apply bg-warning-50;
+  }
+
+  .badge.badge-filled.badge-error {
+    @apply bg-error-50;
+  }
+
+  .badge.badge-filled.badge-neutral {
+    @apply bg-neutral-50;
+  }
+}
+
+@layer components {
+  [cmdk-list] {
+    @apply hidden rounded-lg;
+  }
+
+  [data-command="true"] [cmdk-list] {
+    @apply block border border-neutral-200;
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} correctamente",
+    "error": "No se pudo {{action}} {{entity}}",
+    "not_found": "{{entity}} no encontrado"
+  },
+  "entities": {
+    "document": "documento",
+    "documents": "documentos",
+    "signer": "firmante",
+    "signers": "firmantes",
+    "link": "enlace",
+    "file": "archivo"
+  },
+  "statuses": {
+    "draft": "borrador",
+    "sent": "enviado",
+    "signed": "firmado",
+    "recycler": "papelera",
+    "deleted": "eliminado",
+    "in_progress": "en progreso",
+    "rejected": "rechazado",
+    "pending_signature": "pendiente de firma"
+  },
+  "actions": {
+    "list": "listado",
+    "create": "creado",
+    "resigned": "refirmar",
+    "signed": "firmado",
+    "update": "actualizado",
+    "delete": "eliminado",
+    "retrieve": "recuperado",
+    "rollback": "revertido",
+    "restore": "restaurado",
+    "reject": "rechazado",
+    "rejected": "rechazado",
+    "notify": "notificado",
+    "generate": "generado",
+    "validate": "validado",
+    "rejected": "rechazado"
+  },
+  "infinitive_actions": {
+    "list": "listar",
+    "create": "crear",
+    "signed": "firmar",
+    "update": "actualizar",
+    "delete": "eliminar",
+    "retrieve": "recuperar",
+    "rollback": "revertir",
+    "restore": "restaurar",
+    "reject": "rechazar",
+    "notify": "notificar",
+    "generate": "generar",
+    "validate": "validar"
+  },
+  "validation": {
+    "invalid_reason": "Razón inválida",
+    "validation_failed": "Hay errores de validación en la entrada.",
+    "at_least_one_required": "Se requiere al menos un campo o atributo.",
+    "required": "Se requiere {{field}}",
+    "invalid_email": "Formato de correo inválido.",
+    "invalid_status": "Estado inválido.",
+    "must_be_integer": "{{field}} debe ser un número entero.",
+    "min_array": "{{field}} debe contener al menos {{min}} elementos.",
+    "general_error": "Ha ocurrido un error. Por favor, inténtelo de nuevo.",
+    "oneOf": "El campo '{{field}}' debe ser uno de los valores permitidos.",
+    "file": {
+      "required": "Se requiere un archivo.",
+      "max_size": "El tamaño máximo es {{size}}MB.",
+      "invalid_type": "Formato no permitido. Solo se permiten: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Demasiados intentos de inicio de sesión. Por favor, inténtelo de nuevo en 5 minutos."
+    },
+    "auth": {
+      "invalid_credentials": "Correo o contraseña inválidos.",
+      "authentication_failed": "Credenciales proporcionadas inválidas.",
+      "registration_failed": "El proceso de registro falló. Por favor, inténtelo de nuevo.",
+      "user_not_found": "El usuario solicitado no existe.",
+      "permission_denied": "No tienes permiso para realizar esta acción."
+    },
+    "server": {
+      "internal": "Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde."
+    },
+    "resource": {
+      "conflict": "El recurso ya existe.",
+      "not_found": "{{entity}} no encontrado.",
+      "format_error": "El documento o archivo tiene un formato inválido, está protegido con contraseña o no puede ser leído."
+    },
+    "token": {
+      "expired": "El token proporcionado ha expirado.",
+      "missing": "Token no enviado.",
+      "invalid": "Token inválido.",
+      "missing_header": "Falta el encabezado de autorización."
+    },
+    "otp": {
+      "send_failed": "No se pudo enviar el OTP. Por favor, inténtelo de nuevo.",
+      "verify_failed": "La verificación del OTP falló. Por favor, inténtelo de nuevo.",
+      "resend_failed": "No se pudo reenviar el OTP. Por favor, inténtelo de nuevo."
+    },
+    "password": {
+      "change_failed": "No se pudo cambiar la contraseña. Por favor, inténtelo de nuevo."
+    },
+    "terms": {
+      "acceptance_failed": "No se pudo aceptar los términos y condiciones. Por favor, inténtelo de nuevo."
+    },
+    "participant": {
+      "invalid": "Error en el participante #{{index}}: {{reason}}",
+      "invalid_summary": "Algunos participantes no son válidos",
+      "missing_field": "Falta el campo '{{field}}' en el participante {{index}}.",
+      "signature_missing_field": "Falta el campo '{{field}}' en la firma {{signature}} del participante {{participant}}."
+    },
+    "signer": {
+      "cannot_sign": "El firmante no puede firmar"
+    },
+    "document": {
+      "missing_parameters": "Faltan parámetros requeridos para el documento.",
+      "restore_success": "Documento restaurado correctamente.",
+      "restore_none_updated": "No se restauró ningún documento.",
+      "not_editable": "El documento no es editable."
+    }
+  },
+  "custom": {
+    "changed_status": "Documento marcado como {{status}}",
+    "rejected_successfully": "Participante rechazado correctamente",
+    "failed_send_participant_rejected_email": "No se pudo enviar el correo de rechazo al participante",
+    "participant_rejected": "Un participante ha rechazado el documento",
+    "signature_rejected": "Se ha rechazado una firma de tu documento.",
+    "assigned_to_sign": "Has sido asignado para firmar un documento",
+    "failed_send_assignment_email": "No se pudo enviar el correo de asignación de firma del documento",
+    "access_denied_document": "Acceso denegado al documento",
+    "not_all_participants_signed": "Todos los participantes deben firmar antes de continuar.",
+    "at_least_one_participant_rejected": "Al menos un participante rechazó; no se puede registrar",
+    "already_registered_in_blockchain": "Documento ya registrado en blockchain",
+    "blockchain_service_unavailable": "El servicio de blockchain no está disponible. Por favor, inténtelo de nuevo más tarde.",
+    "document_registered_blockchain": "Documento registrado en blockchain correctamente",
+    "has_been_registered_blockchain": "El documento ya ha sido registrado en blockchain",
+    "document_registered_blockchain_subject": "Documento registrado en blockchain",
+    "cannot_delete_signed_participant": "No se puede eliminar el documento porque al menos un participante ya ha firmado.",
+    "cannot_delete_invalid_status": "No se puede eliminar el documento porque su estado actual no permite la eliminación.",
+    "cannot_delete_not_found": "No se puede eliminar el documento porque no existe o ya fue eliminado.",
+    "invalid_link": "Link invalido",
+    "invalid_signer": "Firmante inválido.",
+    "invalid_document": "Documento inválido.",
+    "invalid_signId": "Firma inválida.",
+    "document_not_in_progress": "El documento no está en progreso.",
+    "signatures_incomplete": "El número de firmas es insuficiente o no coincide con el requerido.",
+    "participant_rejected": "El participante ha rechazado el documento.",
+    "participant_already_signed": "El participante ya ha firmado el documento.",
+    "notify_next_signer": "Se ha notificado al siguiente firmante",
+    "signer_not_posible_resign": "No es posible solicitar un refirmado porque el firmante ya está pendiente de firma.",
+    "owner_sign_notfound": "No es posible firmar este documento",
+    "hash_verified_successfully": "Hash verificado correctamente",
+    "hash_invalid": "El hash es incorrecto o no se pudo verificar. Puede estar mal formado o ser inválido.",
+    "registry_unavailable": "No se pudo validar la firma en blockchain. El registro no está disponible.",
+    "validations_completed_successfully": "Las validaciones se completaron correctamente.",
+    "validations_failed": "Hubo un error al completar las validaciones. Esto puede deberse a que no las completaste, el resultado fue incorrecto o las validaciones no te corresponden.",
+    "validations_not_completed": "No se han completado correctamente una o más validaciones requeridas.",
+    "validations_failed_generic": "Una o más validaciones no se han superado. Por favor, revisa los datos ingresados e inténtalo nuevamente.",
+    "no_validations_pending": "¡No tienes validaciones pendientes para este documento! Puedes continuar con el proceso normalmente.",
+    "validations_processing": "Las validaciones están siendo procesadas.",
+    "participant_not_found": "Participante no encontrado"
+  },
+  "email": {
+    "team_adamo_name": "Equipo Adamo Sign",
+    "assigned_to_sign": "Has sido asignado para firmar un documento",
+    "participant_rejected": "Un participante ha rechazado el documento",
+    "signature_rejected": "Se ha rechazado una firma de tu documento.",
+    "document_registered_blockchain_subject": "Documento registrado en blockchain",
+    "has_been_registered_blockchain": "El documento ya ha sido registrado en blockchain",
+    "request_sign": {
+      "request_sign_subject": "{{sign_name_requester}} solicita tu firma",
+      "request_sign_title": "{{sign_name_requester}} solicita tu firma.",
+      "request_sign_greeting": "¡Hola {{guest_name}}! Has sido invitado por {{sign_name_requester}} a firmar el documento: {{document_name}} en Adamo Sign.",
+      "request_sign_button": "Ver documento",
+      "request_sign_link_text": "O accede a través del siguiente link:"
+    },
+    "declined_doc": {
+      "declined_doc_subject": "¡Documento rechazado!",
+      "declined_doc_title": "¡Documento rechazado!",
+      "declined_doc_message": "{{signer_name}} ha rechazado firmar el documento: {{document_name}} Revisa el motivo a continuación.",
+      "declined_doc_comment_label": "Motivo del rechazo",
+      "declined_doc_button": "Ver documento",
+      "declined_doc_link_text": "O accede a través del siguiente link:",
+      "declined_doc_date_label": "El"
+    },
+    "completed_doc": {
+      "completed_doc_subject": "¡Documento completado!",
+      "completed_doc_title": "¡DOCUMENTO COMPLETADO!",
+      "completed_doc_message": "¡Hola {{guest_name}}! El documento: {{document_name}} se ha completado exitosamente.",
+      "completed_doc_button": "Ver documento",
+      "completed_doc_link_text": "O accede a través del siguiente link:",
+      "completed_doc_signed_users": "Firmado por {{signed_users_count}} usuarios."
+    },
+    "footer": {
+      "text": "Utiliza Adamo Sign para crear, enviar, realizar seguimiento y firmar electrónicamente documentos de forma rápida y segura.",
+      "address": "Carrera 16 Bis #8-24 Edificio OKO TOWER, Piso 6, Pinares, Pereira, Risaralda."
+    }
+  }
+}

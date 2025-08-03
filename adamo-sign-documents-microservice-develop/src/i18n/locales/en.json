@@ -1,0 +1,203 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} successfully",
+    "error": "Failed to {{action}} {{entity}}",
+    "not_found": "{{entity}} not found"
+  },
+  "entities": {
+    "blockchain": "blockchain",
+    "document": "document",
+    "documents": "documents",
+    "signer": "signer",
+    "signers": "signers",
+    "link": "link",
+    "file": "file"
+  },
+  "statuses": {
+    "draft": "draft",
+    "sent": "sent",
+    "signed": "signed",
+    "recycler": "recycle bin",
+    "deleted": "deleted",
+    "in_progress": "in_progress",
+    "rejected": "rejected",
+    "pending_signature": "pending signature"
+  },
+  "actions": {
+    "list": "list",
+    "create": "created",
+    "signed": "signed",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "rejected": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "infinitive_actions": {
+    "list": "list",
+    "create": "created",
+    "signed": "sign",
+    "resigned": "resign",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated",
+    "rejected": "rejected"
+  },
+  "validation": {
+    "invalid_reason": "Invalid reason",
+    "validation_failed": "There are validation errors in the input.",
+    "at_least_one_required": "At least one field or attribute is required.",
+    "required": "The field '{{field}}' is required.",
+    "invalid_email": "Invalid email format.",
+    "invalid_status": "Invalid status.",
+    "must_be_integer": "{{field}} must be an integer.",
+    "min_array": "{{field}} must contain at least {{min}} items.",
+    "general_error": "An error has occurred. Please try again.",
+    "oneOf": "The field '{{field}}' must be one of the allowed values.",
+    "file": {
+      "required": "File is required.",
+      "max_size": "Maximum allowed size is {{size}}MB.",
+      "invalid_type": "Invalid format. Only allowed: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Too many login attempts. Please try again in 5 minutes."
+    },
+    "auth": {
+      "invalid_credentials": "Invalid email or password.",
+      "authentication_failed": "Provided credentials are invalid.",
+      "registration_failed": "Registration process failed. Please try again.",
+      "user_not_found": "User not found.",
+      "permission_denied": "You do not have permission to perform this action."
+    },
+    "server": {
+      "internal": "An unexpected error occurred. Please try again later."
+    },
+    "resource": {
+      "conflict": "The resource already exists.",
+      "not_found": "{{entity}} not found.",
+      "format_error": "The document or file has an invalid format, is password protected, or cannot be read."
+    },
+    "token": {
+      "expired": "The provided token has expired.",
+      "missing": "Token was not provided.",
+      "invalid": "Invalid token.",
+      "missing_header": "Authorization header is missing."
+    },
+    "otp": {
+      "send_failed": "Failed to send OTP. Please try again.",
+      "verify_failed": "OTP verification failed. Please try again.",
+      "resend_failed": "Failed to resend OTP. Please try again."
+    },
+    "password": {
+      "change_failed": "Failed to change password. Please try again."
+    },
+    "terms": {
+      "acceptance_failed": "Failed to accept terms and conditions. Please try again."
+    },
+    "participant": {
+      "invalid": "Error in participant #{{index}}: {{reason}}",
+      "invalid_summary": "Some participants are invalid",
+      "missing_field": "Missing field '{{field}}' in participant {{index}}.",
+      "signature_missing_field": "Missing field '{{field}}' in signature {{signature}} of participant {{participant}}."
+    },
+    "signer": {
+      "cannot_sign": "The signer cannot sign"
+    },
+    "document": {
+      "missing_parameters": "Missing required parameters for document.",
+      "restore_success": "Document restored successfully.",
+      "restore_none_updated": "No documents were restored.",
+      "not_editable": "Document cannot be edited."
+    }
+  },
+  "custom": {
+    "changed_status": "Document marked as {{status}}",
+    "rejected_successfully": "Participant rejected successfully",
+    "failed_send_participant_rejected_email": "Failed to send rejection email to participant",
+    "participant_rejected": "A participant has rejected the document",
+    "signature_rejected": "A signature on your document has been rejected.",
+    "assigned_to_sign": "You have been assigned to sign a document",
+    "failed_send_assignment_email": "Failed to send document signature assignment email.",
+    "access_denied_document": "Access denied to the document",
+    "not_all_participants_signed": "All participants must sign before proceeding.",
+    "at_least_one_participant_rejected": "At least one participant rejected; cannot register",
+    "already_registered_in_blockchain": "Document already registered in blockchain",
+    "blockchain_service_unavailable": "The blockchain service is unavailable. Please try again later.",
+    "document_registered_blockchain": "Document successfully registered in blockchain",
+    "has_been_registered_blockchain": "The document has already been registered in blockchain",
+    "document_registered_blockchain_subject": "Document Registered in Blockchain",
+    "cannot_delete_signed_participant": "Cannot delete the document because at least one participant has already signed.",
+    "cannot_delete_invalid_status": "Cannot delete the document because its current status does not allow deletion.",
+    "cannot_delete_not_found": "Cannot delete the document because it does not exist or has already been deleted.",
+    "invalid_link": "Invalid link.",
+    "invalid_signer": "Invalid signer.",
+    "invalid_document": "Invalid document.",
+    "invalid_signId": "Invalid signature.",
+    "document_not_in_progress": "The document is not in progress.",
+    "signatures_incomplete": "The number of signatures is insufficient or does not match the required amount.",
+    "participant_rejected": "The participant has rejected the document.",
+    "participant_already_signed": "The participant has already signed the document.",
+    "notify_next_signer": "The next signer has been notified",
+    "signer_not_posible_resign": "It is not possible to request a re-sign because the signer is already pending signature.",
+    "owner_sign_notfound": "Cannot be signed this document",
+    "hash_verified_successfully": "Hash verified successfully.",
+    "hash_invalid": "The hash is incorrect or could not be verified. It may be malformed or invalid.",
+    "registry_unavailable": "Could not validate the signature on blockchain. The registry is unavailable.",
+    "validations_completed_successfully": "Validations were completed successfully.",
+    "validations_failed": "There was an error completing the validations. This may be because you did not complete them, the result was incorrect, or the validations do not correspond to you.",
+    "validations_not_completed": "One or more required validations have not been completed successfully.",
+    "validations_failed_generic": "One or more validations have not been passed. Please review the entered data and try again.",
+    "no_validations_pending": "You have no pending validations for this document! You can continue with the process as usual.",
+    "validations_processing": "Validations are being processed.",
+    "participant_not_found": "Participant not found"
+  },
+  "email": {
+    "team_adamo_name": "Adamo sign team",
+    "assigned_to_sign": "You have been assigned to sign a document",
+    "participant_rejected": "A participant has rejected the document",
+    "signature_rejected": "A signature on your document has been rejected.",
+    "document_registered_blockchain_subject": "Document Registered in Blockchain",
+    "has_been_registered_blockchain": "The document has already been registered in blockchain",
+    "request_sign": {
+      "request_sign_subject": "{{sign_name_requester}} requests your signature",
+      "request_sign_title": "{{sign_name_requester}} requests your signature.",
+      "request_sign_greeting": "Hello {{guest_name}}! You have been invited by {{sign_name_requester}} to sign the document: {{document_name}} in Adamo Sign.",
+      "request_sign_button": "View document",
+      "request_sign_link_text": "Or access through the following link:"
+    },
+    "declined_doc": {
+      "declined_doc_subject": "Document Declined!",
+      "declined_doc_title": "DOCUMENT DECLINED!",
+      "declined_doc_message": "{{signer_name}} has declined to sign the document: {{document_name}}. See the reason below.",
+      "declined_doc_comment_label": "Reason for decline",
+      "declined_doc_button": "View document",
+      "declined_doc_link_text": "Or access through the following link:",
+      "declined_doc_date_label": "On"
+    },
+    "completed_doc": {
+      "completed_doc_subject": "Document Completed!",
+      "completed_doc_title": "DOCUMENT COMPLETED!",
+      "completed_doc_message": "Hello {{guest_name}}! The document: {{document_name}} has been successfully completed.",
+      "completed_doc_button": "View document",
+      "completed_doc_link_text": "Or access through the following link:",
+      "completed_doc_signed_users": "Signed by {{signed_users_count}} users."
+    },
+    "footer": {
+      "text": "Use Adamo Sign to create, send, track, and electronically sign documents quickly and securely.",
+      "address": "Carrera 16 Bis #8-24 OKO TOWER Building, 6th Floor, Pinares, Pereira, Risaralda."
+    }
+  }
+}

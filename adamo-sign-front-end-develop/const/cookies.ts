@@ -1,4 +1,0 @@
-export enum COOKIES_APP {
-  ADS_USRESAD = "ADS_USRESAD",
-  ADS_TKAPPAD = "ADS_TKAPPAD",
-}

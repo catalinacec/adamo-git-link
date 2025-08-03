@@ -6,6 +6,9 @@ export interface Signature {
   recipientsName: string;
   signatureText?: string;
   signature?: string | File;
+  signatureType: 'draw' | 'type' | 'upload';
+  signatureFontFamily?: string;
+  signatureColor?: string;
   signatureContentFixed?: boolean;
   signatureDelete?: boolean;
   signatureIsEdit?: boolean;
@@ -17,6 +20,9 @@ export interface Signature {
   height: number;
   rotation?: number;
   color?: string;
+  signedAt?: string;
+  ip?: string;
+  userAgent?: string;
 }
 
 export interface Participant {
@@ -31,6 +37,9 @@ export interface Participant {
   typeValidation?: string[];
   status?: ParticipantStatus;
   signatures: Signature[];
+  signedAt?: string;
+  rejectedAt?: string;
+  rejectionReason?: string;
   _id?: string;
 }
 
@@ -41,9 +50,30 @@ export interface Document {
   owner: string;
   version: number;
   participants: Participant[];
-  status: string;
+  status: 'draft' | 'sent' | 'partial' | 'completed' | 'rejected';
   isActive: boolean;
   isDeleted: boolean;
   createdAt: string;
   updatedAt: string;
+  completedAt?: string;
+  totalSignatures: number;
+  completedSignatures: number;
+  pendingSignatures: number;
+}
+
+export interface DocumentStats {
+  totalDocuments: number;
+  pendingSignatures: number;
+  completedDocuments: number;
+  totalContacts: number;
+  monthlyVerifications: number;
+}
+
+export interface SignatureEvent {
+  id: string;
+  documentId: string;
+  participantId: string;
+  action: 'signed' | 'rejected' | 'viewed';
+  timestamp: string;
+  details?: any;
 }

@@ -1,0 +1,177 @@
+name: 🚀 Deploy Authorizer Automatically
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FUNCTION_NAME: adamo-jwt-authorizer
+      LAYER_NAME: adamo-jwt-authorizer-layer
+      AWS_REGION: sa-east-1
+      AWS_STS_REGIONAL_ENDPOINTS: legacy
+
+    steps:
+      - name: ⏱️ Record start time
+        id: start-time
+        run: echo "timestamp=$(date +%s)" >> $GITHUB_OUTPUT
+
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 🔍 Check for dependency changes
+        id: deps
+        run: |
+          BEFORE=${{ github.event.before }}
+          HEAD=${{ github.sha }}
+          if [[ "$BEFORE" =~ ^0+$ ]]; then
+            echo "No previous commit, marking deps_changed=true" 
+            echo "deps_changed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          CHANGED=$(git diff --name-only $BEFORE $HEAD \
+            | grep -E '^(package\.json|package-lock\.json|yarn\.lock)' || true)
+
+          if [[ -n "$CHANGED" ]]; then
+            echo "deps_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "deps_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🖥️ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: 📦 Install deps
+        run: npm ci
+
+      - name: 🔨 Bundle with esbuild & copy assets
+        run: npm run build
+
+      - name: 🎯 Prune devDependencies
+        run: npm run prune:prod
+
+      - name: 🔐 Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: 🗜️ Package and publish layer only if dependencies change
+        if: steps.deps.outputs.deps_changed == 'true'
+        run: npm run zip:nodejs
+
+      - name: ☁️ Publish new Layer version
+        if: steps.deps.outputs.deps_changed == 'true'
+        id: publish_layer
+        run: |
+          LAYER_ARN=$(aws lambda publish-layer-version \
+            --layer-name ${{ env.LAYER_NAME }} \
+            --zip-file fileb://nodejs.zip \
+            --compatible-runtimes nodejs20.x \
+            --query 'LayerVersionArn' --output text)
+          echo "new_layer_arn=$LAYER_ARN" >> $GITHUB_OUTPUT
+
+      - name: 📦 Install zip tool
+        run: sudo apt-get update && sudo apt-get install -y zip
+
+      - name: 🗜️ Package ZIP Dist
+        run: |
+          npm run zip:dist
+
+      - name: ☁️ Upload to Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name ${{ env.FUNCTION_NAME }} \
+            --zip-file fileb://dist.zip \
+            --region ${{ env.AWS_REGION }}
+
+      - name: ⏳ Wait for code deployment to finish
+        run: |
+          aws lambda wait function-updated \
+            --function-name ${{ env.FUNCTION_NAME }} \
+            --region ${{ env.AWS_REGION }}
+
+      - name: ☁️ Update Lambda configuration with new Layer
+        if: steps.deps.outputs.deps_changed == 'true'
+        run: |
+          aws lambda update-function-configuration \
+            --function-name ${{ env.FUNCTION_NAME }} \
+            --layers "${{ steps.publish_layer.outputs.new_layer_arn }}"
+
+      - name: 🧹 Cleanup old Layer versions
+        if: steps.deps.outputs.deps_changed == 'true'
+        run: |
+          ARN_BASE="arn:aws:lambda:${{ env.AWS_REGION }}:${{ secrets.AWS_ACCOUNT_ID }}:layer:${{ env.LAYER_NAME }}"
+          MAX_KEEP=10
+
+          VERSIONS=($(aws lambda list-layer-versions \
+            --layer-name ${{ env.LAYER_NAME }} \
+            --query 'LayerVersions[].Version' --output text | sort -n))
+          COUNT=${#VERSIONS[@]}
+
+          if [ "$COUNT" -gt "$MAX_KEEP" ]; then
+            NUM_DELETE=$(( COUNT - MAX_KEEP ))
+            for v in "${VERSIONS[@]:0:$NUM_DELETE}"; do
+              echo "Deleting old version $v"
+              aws lambda delete-layer-version \
+                --layer-name ${{ env.LAYER_NAME }} \
+                --version-number "$v"
+            done
+          else
+            echo "Only $COUNT versions, nothing to clean."
+          fi
+
+      - name: 📣 Notify Telegram on success
+        if: success()
+        run: |
+          END_TIME=$(date +%s)
+          START_TIME=${{ steps.start-time.outputs.timestamp }}
+          DURATION=$(( END_TIME - START_TIME ))
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+
+          MESSAGE="✅ *[Backend] Lambda Deployment Successful*\n\n"
+          MESSAGE+="📌 *Function:* \`${{ env.FUNCTION_NAME }}\`\n"
+          MESSAGE+="👤 *By:* \`${{ github.actor }}\`\n"
+          MESSAGE+="📂 *Branch:* \`${{ github.ref_name }}\`\n"
+          MESSAGE+="📝 *Commit:* [\`${SHORT_SHA}\`](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})\n"
+          MESSAGE+="💬 *Message:* _${{ github.event.head_commit.message }}_\n"
+          MESSAGE+="⏱ *Started at:* \`${{ github.event.head_commit.timestamp }}\`\n"
+          MESSAGE+="⌛ *Duration:* ${DURATION}s\n"
+          MESSAGE+="🔗 [View GitHub Job](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode=Markdown \
+            -d text="$MESSAGE"
+
+      - name: ❌ Notify Telegram on failure
+        if: failure()
+        run: |
+          END_TIME=$(date +%s)
+          START_TIME=${{ steps.start-time.outputs.timestamp }}
+          DURATION=$(( END_TIME - START_TIME ))
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+
+          MESSAGE="🚨 *[Backend] Lambda Deployment Failed*\n\n"
+          MESSAGE+="📌 *Function:* \`${{ env.FUNCTION_NAME }}\`\n"
+          MESSAGE+="👤 *By:* \`${{ github.actor }}\`\n"
+          MESSAGE+="📂 *Branch:* \`${{ github.ref_name }}\`\n"
+          MESSAGE+="📝 *Commit:* [\`${SHORT_SHA}\`](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})\n"
+          MESSAGE+="💬 *Message:* _${{ github.event.head_commit.message }}_\n"
+          MESSAGE+="⏱ *Started at:* \`${{ github.event.head_commit.timestamp }}\`\n"
+          MESSAGE+="⌛ *Duration:* ${DURATION}s\n"
+          MESSAGE+="❗ *Check the logs for details.*\n"
+          MESSAGE+="🔗 [View GitHub Job](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode=Markdown \
+            -d text="$MESSAGE"

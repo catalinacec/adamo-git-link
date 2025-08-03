@@ -1,0 +1,104 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} successfully",
+    "error": "Failed to {{action}} {{entity}}",
+    "not_found": "{{entity}} not found"
+  },
+  "entities": {
+    "user": "user",
+    "users": "users",
+    "contact": "contact",
+    "contacts": "contacts",
+    "link": "link",
+    "file": "file"
+  },
+  "statuses": {
+    "sent": "sent",
+    "deleted": "deleted",
+    "rejected": "rejected"
+  },
+  "actions": {
+    "list": "list",
+    "create": "created",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "infinitive_actions": {
+    "list": "list",
+    "create": "created",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "validation": {
+    "invalid_reason": "Invalid reason",
+    "validation_failed": "There are validation errors in the input.",
+    "at_least_one_required": "At least one field or attribute is required.",
+    "required": "The field '{{field}}' is required.",
+    "invalid_email": "Invalid email format.",
+    "invalid_status": "Invalid status.",
+    "must_be_integer": "{{field}} must be an integer.",
+    "min_array": "{{field}} must contain at least {{min}} items.",
+    "file": {
+      "required": "File is required.",
+      "max_size": "Maximum allowed size is {{size}}MB.",
+      "invalid_type": "Only allowed types: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Too many login attempts. Please try again in 5 minutes."
+    },
+    "auth": {
+      "invalid_credentials": "Invalid email or password.",
+      "authentication_failed": "Provided credentials are invalid.",
+      "registration_failed": "Registration process failed. Please try again.",
+      "user_not_found": "User not found.",
+      "permission_denied": "You do not have permission to perform this action.",
+      "passwords_do_not_match": "New password and confirmation do not match.",
+      "password_same_as_old": "New password cannot be the same as the old password.",
+      "old_password_incorrect": "The old password is incorrect.",
+      "two_factor_not_enabled": "Two-factor authentication is not enabled.",
+      "invalid_two_factor_code": "Invalid two-factor authentication code."
+    },
+    "server": {
+      "internal": "An unexpected error occurred. Please try again later."
+    },
+    "resource": {
+      "conflict": "The resource already exists.",
+      "not_found": "{{entity}} not found.",
+      "format_error": "The document or file has an invalid format, is password protected, or cannot be read."
+    },
+    "token": {
+      "expired": "The provided token has expired.",
+      "missing": "Token was not provided.",
+      "invalid": "Invalid token.",
+      "missing_header": "Authorization header is missing."
+    },
+    "user": {
+      "no_file_uploaded": "No file has been uploaded.",
+      "failed_two_factor_auth": "Failed to enable two-factor authentication.",
+      "token_verification_failed": "Failed to verify the token or the token is invalid.",
+      "invalid_two_factor_auth": "Invalid two-factor authentication code.",
+      "failed_disable_two_factor_auth": "Failed to disable two-factor authentication."
+    }
+  },
+  "custom": {
+    "enabled_two_factor_auth": "Two-factor authentication enabled",
+    "valid_two_factor_auth": "The two-factor authentication code is valid",
+    "disabled_two_factor_auth": "Two-factor authentication disabled successfully"
+  }
+}

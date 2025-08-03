@@ -1,0 +1,24 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+RUN apk add --no-cache zip
+
+COPY . .
+
+RUN npm ci
+RUN npm run build:lambda
+
+# ✅ Copiar locales y templates a rutas correctas
+RUN mkdir -p dist/i18n templates && \
+    cp -r src/i18n/locales dist/i18n/locales && \
+    cp -R src/application/services/templates/* templates/
+
+# 📦 Preparar carpeta deploy y empaquetar
+RUN rm -rf deploy lambda.js && \
+    mkdir -p deploy && \
+    cp -r dist/* deploy/ && \
+    cp package.json deploy/ && \
+    cd deploy && npm install --omit=dev && cd .. && \
+    cp dist/lambda.js lambda.js && \
+    zip -r lambda.zip lambda.js templates package.json node_modules deploy

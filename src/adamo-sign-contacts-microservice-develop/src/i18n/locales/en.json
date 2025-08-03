@@ -1,0 +1,92 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} successfully",
+    "error": "Failed to {{action}} {{entity}}",
+    "not_found": "{{entity}} not found"
+  },
+  "entities": {
+    "contact": "contact",
+    "contacts": "contacts",
+    "link": "link",
+    "file": "file"
+  },
+  "statuses": {
+    "sent": "sent",
+    "deleted": "deleted",
+    "rejected": "rejected"
+  },
+  "actions": {
+    "list": "list",
+    "create": "created",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "infinitive_actions": {
+    "list": "list",
+    "create": "created",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "validation": {
+    "invalid_reason": "Invalid reason",
+    "validation_failed": "There are validation errors in the input.",
+    "at_least_one_required": "At least one field or attribute is required.",
+    "required": "The field '{{field}}' is required.",
+    "invalid_email": "Invalid email format.",
+    "invalid_format": "Invalid format.",
+    "invalid_status": "Invalid status.",
+    "must_be_integer": "{{field}} must be an integer.",
+    "min_array": "{{field}} must contain at least {{min}} items.",
+    "file": {
+      "required": "File is required.",
+      "max_size": "Maximum allowed size is {{size}}MB.",
+      "invalid_type": "Only allowed types: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Too many login attempts. Please try again in 5 minutes."
+    },
+    "auth": {
+      "invalid_credentials": "Invalid email or password.",
+      "authentication_failed": "Provided credentials are invalid.",
+      "registration_failed": "Registration process failed. Please try again.",
+      "user_not_found": "User not found.",
+      "permission_denied": "You do not have permission to perform this action."
+    },
+    "server": {
+      "internal": "An unexpected error occurred. Please try again later."
+    },
+    "resource": {
+      "conflict": "The resource already exists.",
+      "email_exists": "The email already exists.",
+      "not_found": "{{entity}} not found.",
+      "format_error": "The document or file has an invalid format, is password protected, or cannot be read."
+    },
+    "token": {
+      "expired": "The provided token has expired.",
+      "missing": "Token was not provided.",
+      "invalid": "Invalid token.",
+      "missing_header": "Authorization header is missing."
+    },
+    "contact": {
+      "missing_parameters": "Missing required parameters for contact.",
+      "invalid_format": "Invalid contact data format"
+    }
+  },
+  "custom": {}
+}

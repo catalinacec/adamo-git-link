@@ -1,0 +1,14 @@
+{
+  "app": {
+    "name": "AdamSign - INT",
+    "mocks": false,
+    "local": "http://localhost:3500"
+  },
+  "api": {
+    "base": "http://localhost:3500/api",
+    "notificationsWs": "ws://localhost:4001",
+    "auth": "http://localhost:3500/api/auth"
+  },
+  "i18nDebug": false,
+  "cloudEnv": "development"
+}

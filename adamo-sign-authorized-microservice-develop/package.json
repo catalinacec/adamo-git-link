@@ -1,0 +1,28 @@
+{
+  "name": "jwt-authorizer-gateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "dev-mac": "nodemon --watch src --ext ts,json,hbs,html --exec 'ts-node src/index.ts'",
+    "prune:prod": "npm prune --production",
+    "build:lambda": "node esbuild.config.js && mkdir -p templates && cp -R src/application/services/templates/* templates/",
+    "build": "tsc",
+    "zip:dist": "rm -rf dist.zip && zip -r dist.zip dist",
+    "zip:nodejs": "rm -rf nodejs.zip && mkdir -p nodejs && cp -r node_modules nodejs/node_modules && zip -r nodejs.zip nodejs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.15.17",
+    "typescript": "^5.8.3"
+  }
+}

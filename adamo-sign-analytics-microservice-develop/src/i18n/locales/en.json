@@ -1,0 +1,103 @@
+{
+  "common": {
+    "success": "{{entity}} {{action}} successfully",
+    "error": "Failed to {{action}} {{entity}}",
+    "not_found": "{{entity}} not found"
+  },
+  "entities": {
+    "document": "document",
+    "documents": "documents",
+    "signer": "signer",
+    "signers": "signers",
+    "link": "link",
+    "file": "file"
+  },
+  "statuses": {
+    "draft": "draft",
+    "sent": "sent",
+    "signed": "signed",
+    "recycler": "recycle bin",
+    "deleted": "deleted",
+    "in progress": "in progress",
+    "rejected": "rejected",
+    "pending_signature": "pending signature"
+  },
+  "actions": {
+    "list": "list",
+    "create": "created",
+    "update": "updated",
+    "delete": "deleted",
+    "retrieve": "retrieved",
+    "rollback": "rolled back",
+    "restore": "restored",
+    "reject": "rejected",
+    "notify": "notified",
+    "generate": "generated",
+    "validate": "validated"
+  },
+  "validation": {
+    "validation_failed": "There are validation errors in the input.",
+    "at_least_one_required": "At least one field or attribute is required.",
+    "required": "The field '{{field}}' is required.",
+    "invalid_email": "Invalid email format.",
+    "invalid_status": "Invalid status.",
+    "must_be_integer": "{{field}} must be an integer.",
+    "min_array": "{{field}} must contain at least {{min}} items.",
+    "file": {
+      "required": "File is required.",
+      "max_size": "Maximum allowed size is {{size}}MB.",
+      "invalid_type": "Only allowed types: {{types}}."
+    }
+  },
+  "errors": {
+    "rate_limit": {
+      "too_many_requests": "Too many login attempts. Please try again in 5 minutes."
+    },
+    "auth": {
+      "invalid_credentials": "Invalid email or password.",
+      "authentication_failed": "Provided credentials are invalid.",
+      "registration_failed": "Registration process failed. Please try again.",
+      "user_not_found": "User not found.",
+      "permission_denied": "You do not have permission to perform this action."
+    },
+    "server": {
+      "internal": "An unexpected error occurred. Please try again later."
+    },
+    "resource": {
+      "conflict": "The resource already exists.",
+      "not_found": "{{entity}} not found.",
+      "format_error": "The document or file has an invalid format, is password protected, or cannot be read."
+    },
+    "token": {
+      "expired": "The provided token has expired.",
+      "missing": "Token was not provided.",
+      "invalid": "Invalid token.",
+      "missing_header": "Authorization header is missing."
+    },
+    "otp": {
+      "send_failed": "Failed to send OTP. Please try again.",
+      "verify_failed": "OTP verification failed. Please try again.",
+      "resend_failed": "Failed to resend OTP. Please try again."
+    },
+    "password": {
+      "change_failed": "Failed to change password. Please try again."
+    },
+    "terms": {
+      "acceptance_failed": "Failed to accept terms and conditions. Please try again."
+    },
+    "participant": {
+      "invalid": "Error in participant #{{index}}: {{reason}}",
+      "invalid_summary": "Some participants are invalid",
+      "missing_field": "Missing field '{{field}}' in participant {{index}}.",
+      "signature_missing_field": "Missing field '{{field}}' in signature {{signature}} of participant {{participant}}."
+    },
+    "document": {
+      "missing_parameters": "Missing required parameters for document.",
+      "restore_success": "Document restored successfully.",
+      "restore_none_updated": "No documents were restored."
+    }
+  },
+  "custom": {
+    "changed_status": "Document marked as {{status}}"
+  }
+}

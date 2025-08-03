@@ -1,0 +1,57 @@
+# ================================
+# 🚀 Stage 1: Build Dependencies
+# ================================
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Instalar utilidades necesarias
+RUN apk add --no-cache zip
+
+# Copiar archivos necesarios
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY esbuild.config.js ./
+
+# Instalar dependencias solo de producción (no devDependencies)
+RUN npm ci --only=production
+
+# Copiar el código fuente
+COPY . .
+
+# ================================
+# 🚀 Stage 2: Compilar Proyecto
+# ================================
+RUN npm run build:lambda
+
+# ================================
+# 🚀 Stage 3: Preparar el ZIP
+# ================================
+RUN mkdir -p deploy && \
+    cp dist/lambda.js deploy/lambda.js && \
+    cp package.json deploy/ && \
+    cp -r src/i18n/locales deploy/i18n/locales && \
+    cp -r src/application/services/templates/* deploy/templates && \
+    cd deploy && npm install --omit=dev --no-package-lock --no-bin-links --no-audit --no-fund && cd ..
+
+# ✅ **Eliminar archivos innecesarios**
+RUN rm -rf deploy/tests \
+    && rm -rf deploy/docs \
+    && rm -rf deploy/*.md \
+    && rm -rf deploy/*.log \
+    && rm -rf deploy/.vscode \
+    && rm -rf deploy/.github \
+    && rm -rf deploy/node_modules/aws-sdk \
+    && rm -rf deploy/node_modules/.cache
+
+# ================================
+# 🚀 Stage 4: Generar el ZIP
+# ================================
+RUN cd deploy && \
+    zip -r9 /app/lambda.zip . 
+
+# ================================
+# 🚀 Stage 5: Output Final
+# ================================
+FROM scratch
+COPY --from=builder /app/lambda.zip /app/lambda.zip

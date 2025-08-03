@@ -1,23 +1,55 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, Clock, Eye } from "lucide-react";
-import { useSignatureData } from "@/context/SignatureContext";
-import { useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
-  const { documentStats, refreshStats, isLoading } = useSignatureData();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    refreshStats();
-  }, [refreshStats]);
+    const fetchDashboard = async () => {
+      setIsLoading(true);
+      try {
+        // Mock data matching GitHub structure
+        const mockData = {
+          welcomeMessage: "¡Hola, María Laura!",
+          plan: "Plan Básico",
+          documents: {
+            completed: 13411,
+            rejected: 671,
+            in_progress: 2510,
+            draft: 0,
+            pending: 0,
+            recycler: 0
+          },
+          totalDocuments: 381,
+          notifications: {
+            unread: 3
+          }
+        };
+        setDashboardData(mockData);
+      } catch (error) {
+        console.error("Error fetching dashboard:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (isAuthenticated) {
+      fetchDashboard();
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-gray-900">¡Bienvenida María Laura!</h1>
+        <h1 className="text-2xl font-semibold text-gray-900">{dashboardData?.welcomeMessage || "¡Bienvenida María Laura!"}</h1>
         <p className="text-gray-600 text-base">
           Todo lo que necesitas está aquí, en una plataforma diseñada para simplificar tu gestión documental.
         </p>
@@ -28,7 +60,7 @@ const Index = () => {
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h2 className="text-xl font-semibold text-gray-900">
-              {isLoading ? '...' : `${documentStats?.totalDocuments || 381} Documentos enviados`}
+              {isLoading ? '...' : `${dashboardData?.totalDocuments || 381} Documentos enviados`}
             </h2>
             <p className="text-gray-500 text-sm">Documentos que aún no han sido firmados</p>
           </div>
@@ -61,7 +93,7 @@ const Index = () => {
               </div>
               <div className="flex-1">
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {isLoading ? '...' : (documentStats?.completedDocuments || 13411).toLocaleString()}
+                  {isLoading ? '...' : (dashboardData?.documents?.completed || 13411).toLocaleString()}
                 </div>
                 <p className="text-gray-600 text-sm">Documentos finalizados</p>
               </div>
@@ -87,7 +119,7 @@ const Index = () => {
               </div>
               <div className="flex-1">
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {isLoading ? '...' : (documentStats?.rejectedDocuments || 671).toLocaleString()}
+                  {isLoading ? '...' : (dashboardData?.documents?.rejected || 671).toLocaleString()}
                 </div>
                 <p className="text-gray-600 text-sm">Documentos rechazados</p>
               </div>
@@ -113,7 +145,7 @@ const Index = () => {
               </div>
               <div className="flex-1">
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {isLoading ? '...' : (documentStats?.pendingSignatures || 2510).toLocaleString()}
+                  {isLoading ? '...' : (dashboardData?.documents?.in_progress || 2510).toLocaleString()}
                 </div>
                 <p className="text-gray-600 text-sm">Documentos en proceso</p>
               </div>

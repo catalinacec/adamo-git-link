@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 const generateTailwindColors = (prefix: string) => {
   const colors: Record<string, string> = {};
   [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((shade) => {
-    colors[shade.toString()] = `rgb(var(--${prefix}-${shade}))`;
+    colors[shade.toString()] = `hsl(var(--${prefix}-${shade}))`;
   });
   return colors;
 };

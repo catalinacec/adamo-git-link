@@ -66,14 +66,15 @@ const Index = () => {
           </div>
           <div className="flex items-center gap-3">
             <Button 
-              className="bg-[#5B6BC0] hover:bg-[#4A5BC4] text-white font-medium px-6"
+              variant="primary"
+              size="large"
               onClick={() => navigate('/documents')}
             >
               Ver documentos
             </Button>
             <Button 
-              variant="outline"
-              className="border-gray-300 text-gray-700 font-medium px-6"
+              variant="secondary"
+              size="large"
               onClick={() => navigate('/documents/new')}
             >
               Nuevo documento

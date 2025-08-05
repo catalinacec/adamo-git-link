@@ -13,7 +13,7 @@ const Documents = () => {
         <h1 className="text-2xl font-bold">Documentos</h1>
         <Button 
           onClick={() => setShowUploadModal(true)}
-          className="bg-blue-600 hover:bg-blue-700"
+          variant="primary"
         >
           <Plus className="h-4 w-4 mr-2" />
           Nuevo documento

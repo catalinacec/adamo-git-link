@@ -8,6 +8,7 @@ import { LangToggle } from "@/components/ui/LangToggle";
 
 interface SignInInputs {
   email: string;
+  password: string;
 }
 
 interface PasswordInputs {
@@ -22,7 +23,6 @@ export default function SignInPage() {
   const [loginError, setLoginError] = useState<string>("");
   const [updatePasswordError, setUpdatePasswordError] = useState<string>("");
   const [loginDisabled, setLoginDisabled] = useState<boolean>(false);
-  const [userEmail, setUserEmail] = useState<string>("");
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -31,23 +31,21 @@ export default function SignInPage() {
     try {
       setLoginError('');
       setIsLoadingLogin(true);
-      setUserEmail(data.email);
       
-      // Mock authentication - simulate checking if user needs to update password
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulate different scenarios based on email
-      if (data.email.includes('newuser')) {
-        // New user - needs to set password
-        setTab('sign-in-password');
-      } else {
-        // Existing user - direct login
-        const mockAccessToken = `mock_access_${Date.now()}`;
-        const mockRefreshToken = `mock_refresh_${Date.now()}`;
+      // Validar credenciales específicas del usuario
+      if (data.email === 'catalinacec@gmail.com' && data.password === 'Caticasd12*') {
+        // Autenticación exitosa
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const mockAccessToken = `access_token_catalina_${Date.now()}`;
+        const mockRefreshToken = `refresh_token_catalina_${Date.now()}`;
         
         login(mockAccessToken, mockRefreshToken);
-        toast.success("Inicio de sesión exitoso");
+        toast.success("¡Bienvenida Catalina! Inicio de sesión exitoso");
         navigate("/");
+      } else {
+        // Credenciales incorrectas
+        setLoginError("Email o contraseña incorrectos. Usa: catalinacec@gmail.com / Caticasd12*");
       }
     } catch (error: any) {
       setLoginError("Error al iniciar sesión");

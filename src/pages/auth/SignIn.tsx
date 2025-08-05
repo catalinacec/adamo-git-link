@@ -1,32 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { AdamoLogo } from "@/components/ui/AdamoLogo";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function SignInPage() {
-  const [tab, setTab] = useState<'sign-in' | 'sign-in-password'>('sign-in');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
   const { login } = useAuth();
   const navigate = useNavigate();
-
-  const handleEmailContinue = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) {
-      toast.error("Por favor ingresa tu email");
-      return;
-    }
-    
-    setTab('sign-in-password');
-  };
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,111 +43,94 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Logo */}
-        <div className="flex justify-center">
-          <AdamoLogo width={180} height={100} />
-        </div>
-        
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-adamo-sign-900">AdamoSign</h1>
-          <p className="mt-2 text-neutral-600">Inicia sesión en tu cuenta</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-adamo-sign-500 via-adamo-sign-600 to-adamo-sign-700 flex flex-col items-center justify-center px-6">
+      {/* Logo */}
+      <div className="mb-8">
+        <AdamoLogo width={200} height={120} className="brightness-0 invert" />
+      </div>
+      
+      {/* Subtitle */}
+      <p className="text-white/90 text-lg mb-12 text-center">
+        Inicia sesión en tu cuenta
+      </p>
 
-        <Card className="border-neutral-200 shadow-lg">
-          <CardHeader className="bg-adamo-sign-600 text-white rounded-t-lg">
-            <CardTitle className="text-white">Bienvenido</CardTitle>
-            <CardDescription className="text-adamo-sign-100">
-              Ingresa tu email y clave para acceder
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="p-6">
-            <Tabs value={tab} onValueChange={(value) => setTab(value as any)}>
-              <TabsContent value="sign-in">
-                <form onSubmit={handleEmailContinue} className="space-y-4">
-                  <div>
-                    <Label htmlFor="email" className="text-adamo-sign-700 font-medium">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tu@email.com"
-                      className="mt-1 border-neutral-300 focus:border-adamo-sign-500 focus:ring-adamo-sign-500"
-                      required
-                    />
-                  </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-adamo-sign-600 hover:bg-adamo-sign-700 text-white"
-                    size="large"
-                  >
-                    Continuar
-                  </Button>
-                </form>
-              </TabsContent>
-              
-              <TabsContent value="sign-in-password">
-                <form onSubmit={handleSignIn} className="space-y-4">
-                  <div>
-                    <Label htmlFor="email-display" className="text-adamo-sign-700 font-medium">Email</Label>
-                    <Input
-                      id="email-display"
-                      type="email"
-                      value={email}
-                      disabled
-                      className="bg-neutral-50 border-neutral-300"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="password" className="text-adamo-sign-700 font-medium">Contraseña</Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••"
-                      className="mt-1 border-neutral-300 focus:border-adamo-sign-500 focus:ring-adamo-sign-500"
-                      required
-                    />
-                  </div>
-                  <div className="flex gap-2">
-                    <Button 
-                      type="button" 
-                      variant="secondary" 
-                      onClick={() => setTab('sign-in')}
-                      className="flex-1"
-                      size="large"
-                    >
-                      Atrás
-                    </Button>
-                    <Button 
-                      type="submit" 
-                      className="flex-1 bg-adamo-sign-600 hover:bg-adamo-sign-700 text-white"
-                      disabled={isLoading}
-                      size="large"
-                    >
-                      {isLoading ? "Iniciando..." : "Iniciar Sesión"}
-                    </Button>
-                  </div>
-                </form>
-              </TabsContent>
-            </Tabs>
+      {/* Login Form */}
+      <div className="w-full max-w-sm space-y-6">
+        <form onSubmit={handleSignIn} className="space-y-6">
+          {/* Email Input */}
+          <div>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Correo electrónico"
+              className="w-full h-12 bg-white/95 border-0 rounded-lg text-adamo-sign-900 placeholder:text-neutral-500 text-base px-4 focus:ring-2 focus:ring-white/50 focus:bg-white"
+              required
+            />
+          </div>
 
-            <div className="mt-6 text-center">
-              <p className="text-sm text-neutral-600">
-                ¿No tienes una cuenta?{" "}
-                <button
-                  onClick={() => navigate("/register")}
-                  className="text-adamo-sign-600 hover:text-adamo-sign-700 font-medium"
-                >
-                  Regístrate
-                </button>
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+          {/* Password Input */}
+          <div className="relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Contraseña"
+              className="w-full h-12 bg-white/95 border-0 rounded-lg text-adamo-sign-900 placeholder:text-neutral-500 text-base px-4 pr-12 focus:ring-2 focus:ring-white/50 focus:bg-white"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700"
+            >
+              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            </button>
+          </div>
+
+          {/* Forgot Password Link */}
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => navigate("/forgot-password")}
+              className="text-white/90 hover:text-white text-sm underline"
+            >
+              ¿Olvidaste tu contraseña? Haz click aquí
+            </button>
+          </div>
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full h-12 bg-white hover:bg-white/90 text-adamo-sign-700 font-semibold text-base rounded-lg border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+          >
+            {isLoading ? "Iniciando..." : "Iniciar sesión"}
+          </Button>
+        </form>
+      </div>
+
+      {/* Language Switch */}
+      <div className="mt-16 text-center">
+        <p className="text-white/70 text-sm">
+          Switch to:{" "}
+          <button className="text-white hover:text-white/90 underline">
+            English
+          </button>
+        </p>
+      </div>
+
+      {/* Register Link */}
+      <div className="mt-8 text-center">
+        <p className="text-white/90 text-sm">
+          ¿No tienes una cuenta?{" "}
+          <button
+            onClick={() => navigate("/register")}
+            className="text-white hover:text-white/90 font-medium underline"
+          >
+            Regístrate
+          </button>
+        </p>
       </div>
     </div>
   );

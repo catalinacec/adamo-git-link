@@ -1,3 +1,4 @@
+import React from "react";
 import { Home, FileText, Users, Shield, Bell, User, LogOut } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";

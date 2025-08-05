@@ -6,12 +6,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { SignatureProvider } from "@/context/SignatureContext";
+import { ProfileProvider } from "@/context/ProfileContext";
+import { DashboardProvider } from "@/context/DashboardContext";
+import { NotificationsProvider } from "@/context/NotificationsContext";
 import { Layout } from "@/components/layout/Layout";
-import Index from "./pages/Index";
-import Documents from "./pages/Documents";
-import Contacts from "./pages/Contacts";
-import Verify from "./pages/Verify";
-import Notifications from "./pages/Notifications";
+import Dashboard from "./pages/Dashboard";
+import DocumentList from "./pages/DocumentList";
+import ContactsList from "./pages/ContactsList";
+import NotificationsList from "./pages/NotificationsList";
 import DocumentViewer from "./pages/DocumentViewer";
 import SignatureList from "./pages/SignatureList";
 import NotFound from "./pages/NotFound";
@@ -67,14 +69,14 @@ const AppRoutes = () => (
     <Route path="/" element={
       <ProtectedRoute>
         <Layout>
-          <Index />
+          <Dashboard />
         </Layout>
       </ProtectedRoute>
     } />
     <Route path="/documents" element={
       <ProtectedRoute>
         <Layout>
-          <Documents />
+          <DocumentList />
         </Layout>
       </ProtectedRoute>
     } />
@@ -95,14 +97,14 @@ const AppRoutes = () => (
     <Route path="/contacts" element={
       <ProtectedRoute>
         <Layout>
-          <Contacts />
+          <ContactsList />
         </Layout>
       </ProtectedRoute>
     } />
     <Route path="/notifications" element={
       <ProtectedRoute>
         <Layout>
-          <Notifications />
+          <NotificationsList />
         </Layout>
       </ProtectedRoute>
     } />
@@ -119,9 +121,15 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <SignatureProvider>
-            <AppRoutes />
-          </SignatureProvider>
+          <ProfileProvider>
+            <DashboardProvider>
+              <NotificationsProvider>
+                <SignatureProvider>
+                  <AppRoutes />
+                </SignatureProvider>
+              </NotificationsProvider>
+            </DashboardProvider>
+          </ProfileProvider>
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

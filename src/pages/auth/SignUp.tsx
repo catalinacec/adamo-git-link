@@ -168,6 +168,7 @@ export default function SignUpPage() {
               <p className="text-sm text-gray-600">
                 ¿Ya tienes una cuenta?{" "}
                 <button
+                  type="button"
                   onClick={() => navigate("/auth")}
                   className="text-blue-600 hover:text-blue-500 font-medium"
                 >

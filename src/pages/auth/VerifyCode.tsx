@@ -97,6 +97,7 @@ export default function VerifyCodePage() {
               <p className="text-sm text-gray-600">
                 ¿No recibiste el código?{" "}
                 <button
+                  type="button"
                   onClick={handleResendCode}
                   disabled={isResending}
                   className="text-blue-600 hover:text-blue-500 font-medium disabled:opacity-50"
@@ -106,6 +107,7 @@ export default function VerifyCodePage() {
               </p>
               
               <button
+                type="button"
                 onClick={() => navigate("/auth")}
                 className="mt-2 text-sm text-gray-500 hover:text-gray-700"
               >

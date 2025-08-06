@@ -17,17 +17,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log('AuthProvider: Initial check for token');
     // Check for existing token on mount
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
     
+    console.log('AuthProvider: Found token:', !!token, 'Found userData:', !!userData);
+    
     if (token && userData) {
+      console.log('AuthProvider: Setting user as authenticated');
       setAccessToken(token);
       setUser(JSON.parse(userData));
       setIsAuthenticated(true);
+    } else {
+      console.log('AuthProvider: No valid token/user found');
     }
     
     setIsLoading(false);
+    console.log('AuthProvider: Initialization complete');
   }, []);
 
   const login = async (email: string, password: string) => {

@@ -28,10 +28,14 @@ const queryClient = new QueryClient();
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
   
+  console.log('ProtectedRoute render - isAuthenticated:', isAuthenticated);
+  
   if (!isAuthenticated) {
+    console.log('ProtectedRoute: Redirecting to /auth because user not authenticated');
     return <Navigate to="/auth" replace />;
   }
   
+  console.log('ProtectedRoute: Showing protected content');
   return <>{children}</>;
 };
 
@@ -39,10 +43,14 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const AuthRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
   
+  console.log('AuthRoute render - isAuthenticated:', isAuthenticated);
+  
   if (isAuthenticated) {
+    console.log('AuthRoute: Redirecting to / because user is authenticated');
     return <Navigate to="/" replace />;
   }
   
+  console.log('AuthRoute: Showing auth content');
   return <>{children}</>;
 };
 

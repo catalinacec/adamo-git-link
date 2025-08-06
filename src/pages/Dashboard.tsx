@@ -1,194 +1,153 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { FileText, Users, Clock, CheckCircle, XCircle, Archive, Plus } from 'lucide-react';
-import { useDashboard } from '@/context/DashboardContext';
-import { useProfile } from '@/context/ProfileContext';
-import { useNotifications } from '@/context/NotificationsContext';
+import { Home, FileText, Users, Bell, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  const { dashboard, loading: dashboardLoading } = useDashboard();
-  const { profile } = useProfile();
-  const { unreadCount } = useNotifications();
+  const navigate = useNavigate();
 
-  if (dashboardLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  const documentStats = dashboard?.documents;
-  const totalDocs = dashboard?.totalDocuments || 0;
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/auth");
+  };
 
   return (
-    <div className="space-y-6">
-      {/* Welcome Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">
-            {dashboard?.welcomeMessage || `¡Hola, ${profile?.name}!`}
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            Gestiona tus documentos y firmas digitales
-          </p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <h1 className="text-xl font-semibold text-gray-900">AdamoSign</h1>
+            </div>
+            <Button 
+              variant="outline" 
+              onClick={handleLogout}
+            >
+              Cerrar Sesión
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-3">
-          <Button>
-            <Plus className="w-4 h-4 mr-2" />
-            Nuevo Documento
-          </Button>
-          <Badge variant="secondary" className="px-3 py-1">
-            Plan: {dashboard?.plan || 'Free'}
-          </Badge>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">¡Bienvenida, Catalina!</h2>
+            <p className="text-gray-600 mt-2">Gestiona tus documentos y firmas digitales</p>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Plus className="h-5 w-5 text-blue-600" />
+                  Nuevo Documento
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Sube un documento para firmar</p>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <FileText className="h-5 w-5 text-green-600" />
+                  Mis Documentos
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Ver todos mis documentos</p>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Users className="h-5 w-5 text-purple-600" />
+                  Contactos
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Gestionar mis contactos</p>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Bell className="h-5 w-5 text-orange-600" />
+                  Notificaciones
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Ver mis notificaciones</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Documentos</CardTitle>
+                <CardDescription>Estado de tus documentos</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-600">Completados</span>
+                    <span className="font-medium">5</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-600">En progreso</span>
+                    <span className="font-medium">3</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-600">Borradores</span>
+                    <span className="font-medium">2</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Actividad Reciente</CardTitle>
+                <CardDescription>Últimas acciones</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <p className="text-sm">Documento "Contrato.pdf" firmado</p>
+                  <p className="text-sm">Nuevo contacto agregado</p>
+                  <p className="text-sm">Documento "Acuerdo.pdf" enviado</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Plan Actual</CardTitle>
+                <CardDescription>Tu suscripción</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <p className="font-medium">Plan Profesional</p>
+                  <p className="text-sm text-gray-600">50 documentos restantes</p>
+                  <Button variant="outline" size="sm">
+                    Actualizar Plan
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
-
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Documentos</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalDocs}</div>
-            <p className="text-xs text-muted-foreground">
-              Todos los documentos
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Completados</CardTitle>
-            <CheckCircle className="h-4 w-4 text-green-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {documentStats?.completed || 0}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Documentos firmados
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">En Progreso</CardTitle>
-            <Clock className="h-4 w-4 text-yellow-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-yellow-600">
-              {documentStats?.in_progress || 0}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Pendientes de firma
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Notificaciones</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{unreadCount}</div>
-            <p className="text-xs text-muted-foreground">
-              Sin leer
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Document Status Overview */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Estado de Documentos</CardTitle>
-            <CardDescription>
-              Resumen del estado actual de tus documentos
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm">Completados</span>
-                </div>
-                <span className="font-medium">{documentStats?.completed || 0}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <span className="text-sm">En progreso</span>
-                </div>
-                <span className="font-medium">{documentStats?.in_progress || 0}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-sm">Borradores</span>
-                </div>
-                <span className="font-medium">{documentStats?.draft || 0}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                  <span className="text-sm">Pendientes</span>
-                </div>
-                <span className="font-medium">{documentStats?.pending || 0}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span className="text-sm">Rechazados</span>
-                </div>
-                <span className="font-medium">{documentStats?.rejected || 0}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-                  <span className="text-sm">Papelera</span>
-                </div>
-                <span className="font-medium">{documentStats?.recycler || 0}</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Acciones Rápidas</CardTitle>
-            <CardDescription>
-              Accede rápidamente a las funciones más utilizadas
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button variant="outline" className="w-full justify-start">
-              <Plus className="w-4 h-4 mr-2" />
-              Crear nuevo documento
-            </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <Users className="w-4 h-4 mr-2" />
-              Gestionar contactos
-            </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <Archive className="w-4 h-4 mr-2" />
-              Ver archivo
-            </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <CheckCircle className="w-4 h-4 mr-2" />
-              Revisar firmas pendientes
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+      </main>
     </div>
   );
 };
